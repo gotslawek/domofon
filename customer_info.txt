@@ -1,0 +1,22 @@
+Domownik:
+
+1. Musze byc powiadaminay, ze ktos dzwoni domofonem i z jakiej lokalizacji.
+2. Chce zobaczyc twarz dzwoniacego.
+3. Chcialbym dodac do Listy inne osoby, ktore rowniez maja byc powiadamiane o zdarzeniu.
+4. Chcialbym moc porozmawiac z telefonu z osoba dzwoniaca domofonem.
+5. Chcialbym wlaczyc podglad domofonu (zarowno obraz jak i dzwiek).
+6. Chcialbym miec historie zdarzen.
+7. Chcialbym miec dostep do domofonu z poziomu przegladarki www.
+8. Chcialbym aby system rozpoznawal czy to "swoj" czy "nieswoj" oraz czy przypadkiem to ktos kto byl juz wczesniej.
+9. Chcialbym aby system dodatkowo rozpoznawal rejestracje auta.
+10. Dodatkowo chcialbym byc informowany w postaci powiadomienia lub alarmu o zblizajacej sie osobie.
+11. System powinien kojarzyc dzwonice osoby.
+12. Chce miec mozliwosc otwierania/zamykania bramy i furtki.
+13. System ma miec mozliwosc podlaczenia wielu zrodel (bramy, furtki, itd.) i wielu odbiorcow (domownicy, znajomi, itd.).
+14. Chcialbym moc zostawic automatyczna informacje.
+
+Gosc:
+
+1. Chcialbym moc wybrac numer i wlaczyc dzwonek.
+2. Chcialbym miec mozliwosc sluchania po wybraniu numeru lub wlaczeniu dzwonka.
+3. Chcialbym moc zostawic infomracji gdy odbiorcy nie ma w domu.
