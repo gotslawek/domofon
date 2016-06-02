@@ -15,8 +15,15 @@ Domownik:
 13. System ma miec mozliwosc podlaczenia wielu zrodel (bramy, furtki, itd.) i wielu odbiorcow (domownicy, znajomi, itd.).
 14. Chcialbym moc zostawic automatyczna informacje.
 
+15. Chcialbym zostac powiadomiony o oczekujacym polaczeniu/dzwonieniu.
+16. Zarejestrowany domownik powinnien korzystac z domofonu na specjalnych prawach. Powinien moc wejsc bez dzwonienia domofonem itd.
+17. Chcialbym moc tworzyc podgrupy uzytkownikow np. zamkniete osiedla.
+18. Chcialbym rowniez miec podglad obrazu rowniez w nocy.
+
 Gosc:
 
 1. Chcialbym moc wybrac numer i wlaczyc dzwonek.
 2. Chcialbym miec mozliwosc sluchania po wybraniu numeru lub wlaczeniu dzwonka.
 3. Chcialbym moc zostawic infomracji gdy odbiorcy nie ma w domu.
+
+
