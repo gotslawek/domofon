@@ -1,0 +1,61 @@
+Slownik:
+domofon - urzadzenie przy wejciu/bramie
+powiadomienie - powiadomienie telefonu, ze ktos dzwoni domofonem
+domownik - osoba uprawniona do odbioru powiadomien
+administrator - osoba uprawniona do zarzadzania lista lokalizacji i lista domownikow, jest takze domownikiem
+gosc - osoba uzywajaca domofonu
+dzwonienie domofonem - wybranie na klawiaturze domofonu numeru mieszkania
+lokalizacja - miejsce zainstalowania domofonu
+system - oprogramowanie odpowiedialne za kontrole domofonu i interakcje z uzytkownikiem
+grupa - zbior osob spelniajacych okreslone kryteria
+
+Jako domownik:
+==============
+1. Chce byc powiadamiany, ze gosc dzwoni domofonem i z jakiej lokalizacji, aby wiedziec przy ktorym wejsciu gosc oczekuje.
+Jestem w dowolnym miejscu, w pewnym momencie komorka zaczyna dzwonic wybrana melodyjke; po melodyjce poznaje,
+ze gosc dzwoni domofonem z konkretnej lokalizacji. Biore komorke do reki, odblokowuje, moge anulowac lub odebrac powiadomienie.
+Odbieram powiadomienie, na ekranie widze opis lokalizacji (np. furtka polnocna). Chce byc powiadomiony najpozniej
+3 sek od rozpoczecia dzwonienia domofonem.
+
+1a Chce przypisac wybrana melodyjke do domofonu, aby dzieki niej zidentyfikowac domofon zanim odczytam opis lokalizacji.
+
+2. Chce zobaczyc na telefonie twarz goscia, aby wiedziec kto jest gosciem.
+Jesli domofon ma kamerke, po odbiorze powiadomienia (przed decyzja czy odebrac czy nie),
+wraz z opisem lokalizacji, widze obraz goscia na ekranie komorki,
+obraz odswieza sie najwolniej co 2 sek, ma minimalna rozdzielczosc AxB, jest kolorowy, jest ostry.
+
+4. Chce moc porozmawiac z telefonu z gosciem.
+Odbieram powiadomienie i rozmawiam z gosciem. Mozemy jednoczesnie rozmawiac, moge w kazdej chwili wylaczyc rozmowe.
+Oczekuje plynnej rozmowy w obu kierunkach.
+
+5a. Chce miec mozliwosc wlaczenia podgladu obrazu na domofonie, aby moc w dowolnym momencie sprawdzic co sie dzieje przy domofonie.
+
+5b. Chce miec mozliwosc wlaczenia podsluchu dzwieku na domofonie, aby moc w dowolnym momencie sprawdzic co sie dzieje przy domofonie.
+
+6a. Chce miec historie powiadomien, aby moc w kazdej chwili sprawdzic kto i kiedy dzwonil domofonem. 
+
+6b. Chce miec dostep do historii powiadomien z telefonu oraz komputera, aby moc wygodnie przegladac historie w dowolnej lokalizacji.
+
+7. Chce miec dostep do domofonu z poziomu przegladarki www, aby w przypadku braku telefonu rowniez moc sterowac domofonem w danej 
+lokalizacji. 
+
+8. Chce aby system pozwalal na rozpoznanie osoby dzwoniacej, aby usytkownik automatycznie dostawal informacje do jakiej grupy nalezy 
+osoba dzwoniaca.
+Kazda osoba dzwoniaca powinna byc zapamietana oraz przypisana do konkretnej grupy. Dodatkowo chce byc powiadamiany jesli osoba 
+dzwoniaca nie zostala jeszcze zarejestrowana przez system.
+
+9. Chce aby system rozpoznawal rejestracje aut gosci dzwoniacych domofonem, aby w przyszlosci moc definiowac okreslone automatyczne 
+akcje w przypadku rozpoznania konkretnej tablicy rejestracyjnej.
+
+Jako administrator:
+===================
+3. Chce zarzadzac lista domownikow, aby przydzielac im uprawnienia do odbioru powiadomien.
+Na telefonie moge zarzadzac lista, ktora pozwala powiazac obsluge wybranego domofonu
+z wybranym domownikiem. Wowczas domownik ten bedzie powiadamiany o dzwonieniu domofonem.
+
+3a. Chce zarzadzac lista lokalizacji, aby moc dodac/usunac domofon.
+Na telefonie moge zarzadzac lista domofonow, ktora pozwala mi dodawac/usuwac/modyfikowac domofony oraz ich opisy.
+
+3b. Chce okreslic, kto ma prawo zmianiac zawartosc listy domownikow oraz listy lokalizacji, aby pozwolic mu zarzadzac tymi listami.
+Na telefonie moge okreslac domownikow, ktorzy moga zarzadzac lista domownikow i lista domofonow, dodawac/usuwac/modyfikowac.
+
