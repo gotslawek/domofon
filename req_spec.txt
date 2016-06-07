@@ -6,73 +6,174 @@ administrator - osoba uprawniona do zarzadzania lista lokalizacji i lista domown
 gosc - osoba uzywajaca domofonu
 dzwonienie domofonem - wybranie na klawiaturze domofonu numeru mieszkania
 lokalizacja - miejsce zainstalowania domofonu
-system - oprogramowanie odpowiedialne za kontrole domofonu i interakcje z uzytkownikiem
+system - oprogramowanie odpowiedialne za kontrole domofonu i interakcje z aplikacja telefonu
 grupa - zbior osob spelniajacych okreslone kryteria
 
 Jako domownik:
 ==============
-1. Chce byc powiadamiany, ze gosc dzwoni domofonem i z jakiej lokalizacji, aby wiedziec przy ktorym wejsciu gosc oczekuje.
+PU_001. Chce byc powiadamiany, ze gosc dzwoni domofonem i z jakiej lokalizacji, aby wiedziec przy ktorym wejsciu gosc oczekuje.
 Jestem w dowolnym miejscu, w pewnym momencie komorka zaczyna dzwonic wybrana melodyjke; po melodyjce poznaje,
-ze gosc dzwoni domofonem z konkretnej lokalizacji. Biore komorke do reki, odblokowuje, moge anulowac lub odebrac powiadomienie.
-Odbieram powiadomienie, na ekranie widze opis lokalizacji (np. furtka polnocna). Chce byc powiadomiony najpozniej
-3 sek od rozpoczecia dzwonienia domofonem.
+ze gosc dzwoni domofonem z konkretnej lokalizacji. Jesli nie przypisalem melodyjki, odgrywana jest melodyjka domyslna.
+Biore komorke do reki, odblokowuje, Na ekranie widze opis lokalizacji (np. furtka polnocna).
+Moge anulowac lub odebrac powiadomienie. (O anulowaniu gosc nie jest informowany.) Odbieram powiadomienie.
+Chce byc powiadomiony najpozniej 3 sek od rozpoczecia dzwonienia domofonem.
+Jesli w tym samym czasie powiadomienia przychodza z kilku lokalizacji, moge wybrac lokalizacje, z ktorej odbiore powiadomienie.
+Jesli juz inny domownik odbierze powiadomienie przede mna, powiadomienie jest przerywane, jestem o tym informowany.
+Jesli w tym samym czasie powiadomienia przychodza z kilku lokalizacji i inny domownik wybral jedna z nich,
+moge wybrac jedna z pozostalych, z ktorej odbiore powiadomienie.
 
-1a Chce przypisac wybrana melodyjke do domofonu, aby dzieki niej zidentyfikowac domofon zanim odczytam opis lokalizacji.
-
-2. Chce zobaczyc na telefonie twarz goscia, aby wiedziec kto jest gosciem.
+PU_002. Chce zobaczyc na telefonie twarz goscia, aby wiedziec kto jest gosciem.
 Jesli domofon ma kamerke, po odbiorze powiadomienia (przed decyzja czy odebrac czy nie),
 wraz z opisem lokalizacji, widze obraz goscia na ekranie komorki,
 obraz odswieza sie najwolniej co 2 sek, ma minimalna rozdzielczosc AxB, jest kolorowy, jest ostry.
 
-4. Chce moc porozmawiac z telefonu z gosciem.
-Odbieram powiadomienie i rozmawiam z gosciem. Mozemy jednoczesnie rozmawiac, moge w kazdej chwili wylaczyc rozmowe.
-Oczekuje plynnej rozmowy w obu kierunkach.
+PU_003. Chce moc porozmawiac z telefonu z gosciem.
+Odbieram powiadomienie i rozmawiam z gosciem. Mozemy jednoczesnie rozmawiac, moge w kazdej chwili zakonczyc rozmowe.
+Moge wyciszyc (mute) moj glos. Oczekuje plynnej rozmowy w obu kierunkach. Podczas rozmowy moge otworzyc furtke lub brame lokalizacji z ktorej dzwoni gosc.
+Jesli w czasie rozmowy przyjdzie powiadomienie z innej lokalizacji, telefon informuje mnie o tym. Moge zakonczyc rozmowe.
+Jesli caly czas przychodzi powiadomienie z innej lokalizacji moge je odebrac potem uzywa PU_001.
 
-5a. Chce miec mozliwosc wlaczenia podgladu obrazu na domofonie, aby moc w dowolnym momencie sprawdzic co sie dzieje przy domofonie.
+PU_004 Chce przypisac wybrana melodyjke do domofonu, aby dzieki niej zidentyfikowac domofon zanim odczytam opis lokalizacji.
+Na telefonie przegladam liste moich lokalizacji (chce miec aktualna liste lokalizacji dostepnych dla mnie)
+i przypisuje melodyjke do lokalizacji. Jesli nie mam przypisanej melodyjki, przypisana jest melodyjka domyslna.
+Jesli pojawi sie nowa lokalizacja, po tym jak przypisalem melodyjki, ma przypisana melodyjke domyslna.
+Jesli usunieta zostanie lokalizacja, widze ja w dalszym ciagu na liscie jako niedostepna (dopoki jej nie usune z mojej listy domofonow).
 
-5b. Chce miec mozliwosc wlaczenia podsluchu dzwieku na domofonie, aby moc w dowolnym momencie sprawdzic co sie dzieje przy domofonie.
+PU_005. Chce miec mozliwosc wlaczenia podgladu obrazu na domofonie, aby moc w dowolnym momencie sprawdzic co sie dzieje przy domofonie.
+Podglad nie bedzie mozliwy jesli trwa rozmowa, aby nie podgladac czyjejs rozmowy (blokowisko)
 
-6a. Chce miec historie powiadomien, aby moc w kazdej chwili sprawdzic kto i kiedy dzwonil domofonem. 
+PU_006. Chce miec mozliwosc wlaczenia podsluchu dzwieku na domofonie, aby moc w dowolnym momencie sprawdzic co sie dzieje przy domofonie.
+Podluch nie bedzie mozliwy jesli trwa rozmowa, aby nie podsluchiwac czyjejs rozmowy (blokowisko)
 
-6b. Chce miec dostep do historii powiadomien z telefonu oraz komputera, aby moc wygodnie przegladac historie w dowolnej lokalizacji.
+PU_007. Chce miec historie powiadomien, aby moc w kazdej chwili sprawdzic kto i kiedy dzwonil domofonem.
 
-7. Chce miec dostep do domofonu z poziomu przegladarki www, aby w przypadku braku telefonu rowniez moc sterowac domofonem w danej 
+PU_008. Chce miec dostep do historii powiadomien z telefonu oraz komputera, aby moc wygodnie przegladac historie w dowolnej lokalizacji.
+
+PU_009. Chce miec dostep do domofonu z poziomu przegladarki www, aby w przypadku braku telefonu rowniez moc sterowac domofonem w danej 
 lokalizacji. 
 
-8. Chce aby system pozwalal na rozpoznanie osoby dzwoniacej, aby usytkownik automatycznie dostawal informacje do jakiej grupy nalezy 
+PU_010. Chce aby system pozwalal na rozpoznanie osoby dzwoniacej, aby usytkownik automatycznie dostawal informacje do jakiej grupy nalezy 
 osoba dzwoniaca.
 Kazda osoba dzwoniaca powinna byc zapamietana oraz przypisana do konkretnej grupy. Dodatkowo chce byc powiadamiany jesli osoba 
 dzwoniaca nie zostala jeszcze zarejestrowana przez system.
 
-9. Chce aby system rozpoznawal rejestracje aut gosci dzwoniacych domofonem, aby w przyszlosci moc definiowac okreslone automatyczne 
+PU_011. Chce aby system rozpoznawal rejestracje aut gosci dzwoniacych domofonem, aby w przyszlosci moc definiowac okreslone automatyczne 
 akcje w przypadku rozpoznania konkretnej tablicy rejestracyjnej.
 
-10. Dodatkowo chcialbym byc informowany w postaci powiadomienia lub alarmu o zblizajacej sie osobie.
+PU_012. Chce przekierowac rozpoczeta rozmowe do innego domownika, aby mogl on zamiaast mnie porozmawiac z gosciem
+Podczas rozmowy decyduje sie na przekazanie rozmowy do innego uzytkownika, wybieram go z listy i przekazuje mu rozmowe.
+Podczas przekierowywania generowany jest dzwiek informujacy o probie przekazania rozmowy, slyszy go domownik i gosc,
+podczas przekierowania moge rozmawiac z gosciem, w momencie odebrania przekierowania przez innego domownika,
+moja rozmowa konczona jest automatycznie i kontynuowana przez domownika, do ktorego jest przekierowana rozmowa.
+
+PU_013. Chce otrzymac przekierowana rozmowe, aby moc porozmawiac z gosciem zamiast innego domownika.
+Uzywa PU_001.
+
+PU_014. Dodatkowo chcialbym byc informowany w postaci powiadomienia lub alarmu o zblizajacej sie osobie.
 Do bramy/furtki podchodzi jakas osoba. Chce otrzymac powiadomienie, jesli ta osoba nie nacisnie dzwonka przez 30 sekund od podejscia.
 Jesli osoba nie wciska dzwonka przez dluzszy czas, chce otrzymac alarm
 
-11. System powinien kojarzyc dzwonice osoby.
+PU_015. System powinien kojarzyc dzwonice osoby.
 Po wykryciu przez system osoby, powinna nastapic jej identyfikacja na podstawie conajmniej jednego zrodla 
 (haslo, RFID, rozpoznawanie twarzy). Informacja kto dzwoni powinna byc przeslana do uzytkownika.
 
-12. Chce miec mozliwosc otwierania/zamykania bramy i furtki.
+PU_016. Chce miec mozliwosc otwierania/zamykania bramy i furtki.
 Chce miec mozliwosc zamykania/otwierania wskazanego wejscia za pomoca aplikacji na telefonie lub przez przegladarke www.
 Wymagana silna autoryzacja uzytkownika, ktory moze otwierac/zamykac wejscia. Każde wydane polecenie musi byc zalogowane.
 
-13. System ma miec mozliwosc podlaczenia wielu zrodel (bramy, furtki, itd.) i wielu odbiorcow (domownicy, znajomi, itd.).
+PU_017. System ma miec mozliwosc podlaczenia wielu zrodel (bramy, furtki, itd.) i wielu odbiorcow (domownicy, znajomi, itd.).
 Chce miec mozliwosc stworzenia listy wejsc (bram, furtek) oraz wielu list odbiorcow a nastepnie przypisac listy odbiorcow do odpowiednich wejsc.
 uzytkownicy powinni widziec tylko te wejscia, do ktorych maja uprawnienia do otwierania/zamykania.
+
+PU_018. Chat, dolaczanie kilku domownikow do rozmowy z gosciem?
+
+PU_019. Nagrywanie rozmow w historii?
 
 
 Jako administrator:
 ===================
-3. Chce zarzadzac lista domownikow, aby przydzielac im uprawnienia do odbioru powiadomien.
+1. Chce zarzadzac lista domownikow, aby przydzielac im uprawnienia do odbioru powiadomien.
 Na telefonie moge zarzadzac lista, ktora pozwala powiazac obsluge wybranego domofonu
 z wybranym domownikiem. Wowczas domownik ten bedzie powiadamiany o dzwonieniu domofonem.
 
-3a. Chce zarzadzac lista lokalizacji, aby moc dodac/usunac domofon.
+2. Chce zarzadzac lista lokalizacji, aby moc dodac/usunac domofon.
 Na telefonie moge zarzadzac lista domofonow, ktora pozwala mi dodawac/usuwac/modyfikowac domofony oraz ich opisy.
+Na liscie chce widziec status domofonu, czy domofon nie ma awarii.
 
-3b. Chce okreslic, kto ma prawo zmianiac zawartosc listy domownikow oraz listy lokalizacji, aby pozwolic mu zarzadzac tymi listami.
+3. Chce okreslic, kto ma prawo zmianiac zawartosc listy domownikow oraz listy lokalizacji, aby pozwolic mu zarzadzac tymi listami.
 Na telefonie moge okreslac domownikow, ktorzy moga zarzadzac lista domownikow i lista domofonow, dodawac/usuwac/modyfikowac.
+
+4. Chce byc powiadamiany o zaistnieniu jakiejkolwiek awarii, aby podjac decyzje co zrobic z problemem.
+Oczekuje przyjscia informacji na telefon o awarii danego domofonu w momencie powstania awarii,
+jesli to mozliwe wraz z opisem awarii.
+
+
+Jako gosc:
+===================
+1. Chce wybrac na domofonie numer mieszkania, aby skontaktowac sie z konkretnymi domownikami.
+Podchodze do domofonu, widze, ze domofon dziala, wybieram numer mieszkania, oczekuje na odebranie powiadomienia przez domownika.
+Jestem informowany, ze powiadomienie jest w toku. Jesli domownik odbierze powiadomienie, rozmawiam z domownikiem,
+jesli nie, jestem informowany o braku odbioru powiadomienia, ewentualnie uslysze automatycznie odtwarzana wiadomosc
+i jesli jest taka mozliwosc, moge nagrac wiadomosc dla domownikow. Jestem powiadamiany w jaki sposob moge rozpoczac
+i zakonczyc nagranie wiadomosci i jak najdluzej moge nagrywac.
+Automatycznie odtwarzana wiadomosc moge takze uslyszec natychmiast bez oczekiwania na odebranie powiadomienia.
+Na odbior powiadomienia czekam 40 sek. Po tym czasie ponownie moge wybrac numer.
+Jesli wybiore poprawny numer, klawiatura jest blokowana do momentu zakonczenia rozmowy lub czasu oczekiwania,
+jesli niepoprawny, jestem o tym informowany i moge pod razu wybrac inny numer.
+Jesli podczas obslugi domofonu zaistnieje awaria, jestem o tym powiadamiany.
+
+
+Jako domofon:
+===================
+1. Chce wyslac powiadomienie o wybraniu numeru do systemu, aby system wiedzial, z ktorymi domownikami ma nawiazac polaczenie
+2. Chce wyswietlac dla goscia informacje o awarii, jesli takowa wystepuje, aby gosc wiedzial, ze domofon nie dziala
+3. Chce otworzyc zamek furtki, aby gosc mogl wejsc
+4. Chce otworzyc brame, aby gosc mogl wjechac samochodem
+5. Chce zamknac brame po xx sek od otwarcia, aby nie byla caly czas otwarta
+6. Chce wyslac do systemu informacje o awarii, aby zapisac ja w historii dzialania systemu.
+7. Chce wyslac do systemu zdjecie goscia (i jego samochodu), czynnosci na domofonie, aby system mogl je zapisac w historii zdarzen.
+8. Chce wyslac do systemu informacje, ze furtka lub brama jest otwarta i jak dlugo, aby zapisac je w historii zdarzen.
+
+
+Jako aplikacja w smartfonie:
+===================
+to juz przypadki niewidoczne dla klienta
+Interakcja z systemem - beda to wskazowki dla implementacji protokolu komunikacji z systemem
+Tryb domownika i administratora
+1. Chce odebrac powiadomienie z systemu o nadchodzacej rozmowie, aby powiadomic o niej domownika
+2. Chce wyslac do systemu informacje o odebraniu powiadomienia przez domownika, aby system rozpoczal przesylanie rozmowy w obu kierunkach
+3. Chce wyslac do systemu strumien dzwieku, aby gosc mnie slyszal
+4. Chce odbierac z systemu strumien dzwieku, abym slyszal goscia
+5. Chce odbierac z systemu obrazy, abym widzial goscia
+   Chce wyslac do systemu informacje o zakonczeniu rozmowy, aby zakonczyc przesylanie rozmowy w obu kierunkach
+6. Chce wyciszyc mikrofon, aby gosc mnie nie slyszal
+7. Chce wyslac do systemu rozkaz otwarcia furtki, aby otworzyc elektrozamek furtki
+8. Chce wyslac do systemu rozkaz otwarcia bramy, aby otworzyc brame (zamkniecie automatyczne po jakims czasie przez sprzet domofonu)
+9. Chce wyslac do systemu rozkaz przyslania historii zdarzen, aby podejrzec jakie zdarzenia zostaly zarejestrowane
+10. Chce odebrac z systemu historie zdarzen, aby podejrzec jakie zdarzenia zostaly zarejestrowane
+11. Chce wyslac do systemu rozkaz przyslania listy domofonow, aby wiedziec, do ktorych domofonow mam dostep
+12. Chce odebrac z systemu liste domofonow, aby wiedziec, do ktorych domofonow mam dostep
+Tryb administratora
+13. Chce wyslac do systemu rozkaz przyslania listy wszystkich domownikow, aby zarzadzac domownikami
+   Chce odebrac z systemu liste wszystkich domownikow, aby zarzadzac domownikami
+14. Chce wyslac do systemu rozkaz przyslania listy wszystkich domofonow, aby zarzadzac domofonami
+   Chce odebrac z systemu liste wszystkich domofonow, aby zarzadzac domofonami
+15. Chce wyslac do systemu rozkaz dodania nowego domofonu, aby powiadomic system o istnieniu nowego domofonu
+16. Chce wyslac do systemu rozkaz usuniecia domofonu, aby powiadomic system o usunieciu domofonu
+17. Chce wyslac do systemu rozkaz dodania nowego uzytkownika, aby powiadomic system o nowym uzytkowniku
+18. Chce wyslac do systemu rozkaz usuniecia uzytkownika, aby powiadomic system o usunieciu uzytkownika
+
+Interakcja z domownikiem i administratorem, gui
+1. Chce wyswietlic informacje o przyjsciu powiadomienia, aby domownik mogl odebrac powiadomienie
+2. Chce wyswietlic liste 
+3. ...
+
+Jako system:
+===================
+to juz przypadki niewidoczne dla klienta
+1. Odbieram powiadomienie z domofonu o nadchodzacej rozmowie
+2. Wysylam powiadomienie do domownikow o nadchodzacej rozmowie
+3. Wysylam historie
+....
+
 
