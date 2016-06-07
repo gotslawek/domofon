@@ -47,6 +47,23 @@ dzwoniaca nie zostala jeszcze zarejestrowana przez system.
 9. Chce aby system rozpoznawal rejestracje aut gosci dzwoniacych domofonem, aby w przyszlosci moc definiowac okreslone automatyczne 
 akcje w przypadku rozpoznania konkretnej tablicy rejestracyjnej.
 
+10. Dodatkowo chcialbym byc informowany w postaci powiadomienia lub alarmu o zblizajacej sie osobie.
+Do bramy/furtki podchodzi jakas osoba. Chce otrzymac powiadomienie, jesli ta osoba nie nacisnie dzwonka przez 30 sekund od podejscia.
+Jesli osoba nie wciska dzwonka przez dluzszy czas, chce otrzymac alarm
+
+11. System powinien kojarzyc dzwonice osoby.
+Po wykryciu przez system osoby, powinna nastapic jej identyfikacja na podstawie conajmniej jednego zrodla 
+(haslo, RFID, rozpoznawanie twarzy). Informacja kto dzwoni powinna byc przeslana do uzytkownika.
+
+12. Chce miec mozliwosc otwierania/zamykania bramy i furtki.
+Chce miec mozliwosc zamykania/otwierania wskazanego wejscia za pomoca aplikacji na telefonie lub przez przegladarke www.
+Wymagana silna autoryzacja uzytkownika, ktory moze otwierac/zamykac wejscia. Każde wydane polecenie musi byc zalogowane.
+
+13. System ma miec mozliwosc podlaczenia wielu zrodel (bramy, furtki, itd.) i wielu odbiorcow (domownicy, znajomi, itd.).
+Chce miec mozliwosc stworzenia listy wejsc (bram, furtek) oraz wielu list odbiorcow a nastepnie przypisac listy odbiorcow do odpowiednich wejsc.
+uzytkownicy powinni widziec tylko te wejscia, do ktorych maja uprawnienia do otwierania/zamykania.
+
+
 Jako administrator:
 ===================
 3. Chce zarzadzac lista domownikow, aby przydzielac im uprawnienia do odbioru powiadomien.
