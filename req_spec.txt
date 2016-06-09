@@ -2,12 +2,13 @@ Slownik:
 domofon - urzadzenie przy wejciu/bramie
 powiadomienie - powiadomienie telefonu, ze ktos dzwoni domofonem
 domownik - osoba uprawniona do odbioru powiadomien
-administrator - osoba uprawniona do zarzadzania lista lokalizacji i lista domownikow, jest takze domownikiem
+administrator - osoba uprawniona do zarzadzania lista lokalizacji i lista domownikow, moze byc rowniez domownikiem
 gosc - osoba uzywajaca domofonu
-dzwonienie domofonem - wybranie na klawiaturze domofonu numeru mieszkania
+wywolanie - wybranie na klawiaturze domofonu numeru mieszkania
 lokalizacja - miejsce zainstalowania domofonu
-system - oprogramowanie odpowiedialne za kontrole domofonu i interakcje z aplikacja telefonu
+system - oprogramowanie odpowiedzialne za kontrole domofonu i interakcje z aplikacja telefonu
 grupa - zbior osob spelniajacych okreslone kryteria
+awaria - blad programowy lub sprzetowy uniemozliwiajacy poprawne dzialanie systemu
 
 Jako domownik:
 ==============
@@ -16,7 +17,7 @@ Jestem w dowolnym miejscu, w pewnym momencie komorka zaczyna dzwonic wybrana mel
 ze gosc dzwoni domofonem z konkretnej lokalizacji. Jesli nie przypisalem melodyjki, odgrywana jest melodyjka domyslna.
 Biore komorke do reki, odblokowuje, Na ekranie widze opis lokalizacji (np. furtka polnocna).
 Moge anulowac lub odebrac powiadomienie. (O anulowaniu gosc nie jest informowany.) Odbieram powiadomienie.
-Chce byc powiadomiony najpozniej 3 sek od rozpoczecia dzwonienia domofonem.
+Chce byc powiadomiony najpozniej 3 sek od rozpoczecia wywolania.
 Jesli w tym samym czasie powiadomienia przychodza z kilku lokalizacji, moge wybrac lokalizacje, z ktorej odbiore powiadomienie.
 Jesli juz inny domownik odbierze powiadomienie przede mna, powiadomienie jest przerywane, jestem o tym informowany.
 Jesli w tym samym czasie powiadomienia przychodza z kilku lokalizacji i inny domownik wybral jedna z nich,
@@ -86,15 +87,19 @@ Chce miec mozliwosc stworzenia listy wejsc (bram, furtek) oraz wielu list odbior
 uzytkownicy powinni widziec tylko te wejscia, do ktorych maja uprawnienia do otwierania/zamykania.
 
 PU_018. Chat, dolaczanie kilku domownikow do rozmowy z gosciem?
+EXTRA, nie na teraz!
 
 PU_019. Nagrywanie rozmow w historii?
+EXTRA, nie na teraz!
+
+PU_020. Otwieranie bramy kodem/pinem/RFID/NFC(telefon) bezposrednio przy wejsciu.
 
 
 Jako administrator:
 ===================
 1. Chce zarzadzac lista domownikow, aby przydzielac im uprawnienia do odbioru powiadomien.
 Na telefonie moge zarzadzac lista, ktora pozwala powiazac obsluge wybranego domofonu
-z wybranym domownikiem. Wowczas domownik ten bedzie powiadamiany o dzwonieniu domofonem.
+z wybranym domownikiem. Wowczas domownik ten bedzie powiadamiany o wywolaniu.
 
 2. Chce zarzadzac lista lokalizacji, aby moc dodac/usunac domofon.
 Na telefonie moge zarzadzac lista domofonow, ktora pozwala mi dodawac/usuwac/modyfikowac domofony oraz ich opisy.
@@ -103,9 +108,13 @@ Na liscie chce widziec status domofonu, czy domofon nie ma awarii.
 3. Chce okreslic, kto ma prawo zmianiac zawartosc listy domownikow oraz listy lokalizacji, aby pozwolic mu zarzadzac tymi listami.
 Na telefonie moge okreslac domownikow, ktorzy moga zarzadzac lista domownikow i lista domofonow, dodawac/usuwac/modyfikowac.
 
+Definiowanie adminow per lokal (np. ustawianie melodii/dzwieku wywolania itd.). 
+
 4. Chce byc powiadamiany o zaistnieniu jakiejkolwiek awarii, aby podjac decyzje co zrobic z problemem.
 Oczekuje przyjscia informacji na telefon o awarii danego domofonu w momencie powstania awarii,
 jesli to mozliwe wraz z opisem awarii.
+
+5. Chce skonfigurowac system samodzielnie, aby ograniczyc pomoc osob trzecich przy instalacji i konfiguracji systemu.
 
 
 Jako gosc:
