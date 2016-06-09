@@ -1,0 +1,91 @@
+Jako domofon:
+===================
+to juz przypadki niewidoczne dla klienta
+Interakcja z systemem - beda to wskazowki dla implementacji protokolu komunikacji z systemem
+
+DOMOFON_001. Chce wyslac powiadomienie o wybraniu numeru do systemu, aby system wiedzial, z ktorymi domownikami ma nawiazac polaczenie
+Jestem w stanie oczekiwania. Po wprowadzeniu numeru mieszkania przez goscia <<DOMOFON_002>> przechodze w stan nawiazywania rozmowy
+- blokuje klawiature (lub ignoruje wcisniecia przyciskow) i wysylam wybrany numer do systemu <<PROT_DOM_SYS_PU_001>>,
+oczekuje na informacje z systemu, czy numer jest prawidlowy. Jesli numer jest prawidlowy, oczekuje na informacje z systemu
+czy powiadomienie jest przyjete  <<PROT_DOM_SYS_PU_002>>. Jesli powiadomienie jest przyjete, przechodze w stan rozmowy
+- wysylam i odbieram strumienie rozmowy  i zdjecia z kamerki az do momentu otrzymania informacji z systemu o zakonczeniu rozmowy przez domownika <<PROT_DOM_SYS_PU_003>>.
+Jesli numer jest nieprawidlowy, informuje o tym goscia.
+Jesli powiadomienie nie jest przyjete, informuje o tym goscia.
+Przechodze w stan oczekiwania.
+Opisac sytuacje wyjatkowe - nie otrzymuje informacji zwrotnej
+Opisac co moge, a co nie moge w danym stanie.
+
+DOMOFON_002. Chce odczytac z klawiatury jakie przyciski wybral gosc, aby zlozyc je w numer.
+Jestem w stanie oczekiwania. Do domofonu podchodzi gosc i wciska przyciski na klawiaturze.
+Po wcisnieciu 4 przyciskow (?) skladam je w numer mieszkania. Jesli w ciagu 10s(?) nie
+wybrano 4 przyciskow. Anuluje skladanie. Oczekuje na ponowne wprowadzenie numeru.
+
+DOMOFON_003. Chce otworzyc zamek furtki, aby gosc mogl wejsc
+Jestem w dowolnym stanie (oprocz stanu awarii?), otrzymuje informacje z systemu, aby otworzyc furtke <<PROT_DOM_SYS_PU_004>>,
+wlaczam elektrozamek furtki. Wysylam informacje o otwarciu furtki do systemu, aby zarejestrowac zdarzenie <<PROT_DOM_SYS_PU_005>>.
+
+DOMOFON_004. Chce wiedziec w ktory momencie furtka jest zamknieta, aby powiadomic o tym system
+Jesli dostane informacje z czujnika zamkniecia furtki, wysylam informacje o zamknieciu furtki do systemu,
+aby zarejestrowac zdarzenie <<PROT_DOM_SYS_PU_006>>
+
+DOMOFON_005. Chce otworzyc brame, aby gosc mogl wjechac samochodem
+Jestem w dowolnym stanie (oprocz stanu awarii?), otrzymuje informacje z systemu, aby otworzyc brame <<PROT_DOM_SYS_PU_007>>,
+wlaczam silownik bramy, aby otworzyc brame. Silownik jest wlaczony do momentu pelnego otwarcia bramy.
+O pelnym otwarciu bramy informowany jestem przez czujnik otwarcia bramy, wylaczam wowczas silownik i
+uruchamiam licznik czasu pelnego otwarcia bramy.
+Wysylam informacje do systemu o otwarciu bramy, aby zarejestrowac zdarzenie <<PROT_DOM_SYS_PU_008>>.
+Sytuacje wyjatkowe zglaszam zdarzenie do systemu.
+
+DOMOFON_006. Chce zamknac brame po xx sek od otwarcia, aby nie byla caly czas otwarta.
+Jestem w dowolnym stanie (oprocz stanu awarii?), brama jest w pelni otwarta.
+Po odliczeniu licznika czasu pelnego otwarcia bramy, wlaczam silownik bramy, aby zamknac brame.
+Silownik bramy jest wlaczony do momentu pelnego zamkniecia bramy, o pelnym zamknieciu bramy
+informowany jestem przez czujnik zamkniecia bramy.
+Jesli brama zostala w pelni zamknieta wysylam informacje o zamknieciu bramy do systemu, aby zarejestrowac zdarzenie <<PROT_DOM_SYS_PU_010>>.
+Sytuacje wyjatkowe zglaszam jako zdarzenie systemu:
+- czujnik przeszkody w bramie informuje, ze w bramie jest przeszkoda.
+
+6. Chce co wybrany czas robic zdjecie kamera, aby system mogl rozpoznawac osoby podchodzace do domofonu.
+Co 5 sek(?) robie zdjecie, wysylam je do analizy do systemu.
+
+7. Chce wyslac do systemu zdjecie goscia (i jego samochodu), aby system mogl je przetworzyc (?) i zapisac je w historii zdarzen.
+Jesli gosc zacznie wybierac numer na klawiaturze, zrobie zdjecie i zarejestruje czynnosci na klawiaturze i przesle je do systemu.
+
+2. Chce wyswietlac dla goscia informacje o awarii, jesli takowa wystepuje, aby gosc wiedzial, ze domofon nie dziala
+Jestem w dowolnym stanie. W momencie wystapienia awarii przechodze w stan awarii,
+wyswietlam informacje dla goscia, ze domofon nie dziala, jesli awaria zostanie usunieta,
+koncze wyswietlac informacje o awarii i przechodze w stan oczekiwania.
+
+
+Protokol komunikacji domofonu z systemem:
+
+PROT_DOM_SYS_PU_001. Chce wyslac do systemu wybrany numer na domofonie, aby system mogl je zapisac w historii zdarzen i wyslac powiadomienie do odpowiednich domownikow.
+
+PROT_DOM_SYS_PU_002. Chce otrzymac z systemu informacje, ze domownik przyjal powiadomienie, aby zestawic rozmowe.
+
+PROT_DOM_SYS_PU_003. Chce otrzymac z systemu informacje o zakonczeniu rozmowy, aby zakonczyc rozmowe i wysylanie zdjec z kamerki.
+
+PROT_DOM_SYS_PU_004. Chce otrzymac z systemu informacje, ze furtka ma byc otwarta, aby sterowac elektrozamkiem.
+
+PROT_DOM_SYS_PU_005. Chce wyslac do systemu informacje, ze furtka zostala otwarta, aby zapisac ja w historii zdarzen.
+
+PROT_DOM_SYS_PU_006. Chce wyslac do systemu informacje, ze furtka zostala zamknieta, aby zapisac ja w historii zdarzen.
+
+PROT_DOM_SYS_PU_007. Chce otrzymac z systemu informacje, ze brama ma byc otwarta, aby moc sterowac silownikiem bramy.
+
+PROT_DOM_SYS_PU_008. Chce wyslac do systemu informacje, ze brama zostala w pelni otwarta, aby zapisac ja w historii zdarzen.
+
+PROT_DOM_SYS_PU_009. Chce otrzymac z systemu informacje, ze brama ma byc zamknieta, aby moc sterowac silownikiem bramy.
+
+PROT_DOM_SYS_PU_010. Chce wyslac do systemu informacje, ze brama zostala zamknieta, aby zapisac ja w historii zdarzen.
+
+PROT_DOM_SYS_PU_011. Chcec wyslac zdjecie z kamerki do systemu, aby system mogl je przetworzyc.
+
+PROT_DOM_SYS_PU_012. Chce otrzymac z systemu informacje o rozpoczaciu podgladu, aby wysylac zdjecia podgladu.
+
+PROT_DOM_SYS_PU_013. Chce otrzymac z systemu informacje o zakonczeniu podgladu, aby zakonczyc wysylanie zdjec podgladu.
+
+PROT_DOM_SYS_PU_014. Chce otrzymac z systemu informacje, o rozpoczaciu podsluchu, aby wysylac dzwiek podluchu.
+
+PROT_DOM_SYS_PU_015. Chce otrzymac z systemu informacje o zakonczeniu podsluchu, aby zakonczyc wysylanie dzwieku podsluchu.
+
