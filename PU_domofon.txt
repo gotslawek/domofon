@@ -1,8 +1,3 @@
-Slownik:
-licznik czasu pelnego otwarcia bramy - licznik cyklicznie wywolujacy procedure wysylajaca informacje do systemu o stalym otwarciu bramy
-licznik czasu otwarcia furtki - licznik cyklicznie wywolujacy procedure wysylajaca informacje do systemu o stalym otwarciu furtki
-licznik maksymalnego czasu otwarcia bramy - licznik cyklicznie wywolujacy procedure zamkniecia bramy
-
 Jako domofon:
 ===================
 to juz przypadki niewidoczne dla klienta
