@@ -1,0 +1,7 @@
+Jako system:
+===================
+to juz przypadki niewidoczne dla klienta
+1. Odbieram powiadomienie z domofonu o nadchodzacej rozmowie
+2. Wysylam powiadomienie do domownikow o nadchodzacej rozmowie
+3. Wysylam historie
+....
