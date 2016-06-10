@@ -1,0 +1,32 @@
+Jako aplikacja w smartfonie:
+===================
+to juz przypadki niewidoczne dla klienta
+Interakcja z systemem - beda to wskazowki dla implementacji protokolu komunikacji z systemem
+Tryb domownika i administratora
+1. Chce odebrac powiadomienie z systemu o nadchodzacej rozmowie, aby powiadomic o niej domownika
+2. Chce wyslac do systemu informacje o odebraniu powiadomienia przez domownika, aby system rozpoczal przesylanie rozmowy w obu kierunkach
+3. Chce wyslac do systemu strumien dzwieku, aby gosc mnie slyszal
+4. Chce odbierac z systemu strumien dzwieku, abym slyszal goscia
+5. Chce odbierac z systemu obrazy, abym widzial goscia
+   Chce wyslac do systemu informacje o zakonczeniu rozmowy, aby zakonczyc przesylanie rozmowy w obu kierunkach
+6. Chce wyciszyc mikrofon, aby gosc mnie nie slyszal
+7. Chce wyslac do systemu rozkaz otwarcia furtki, aby otworzyc elektrozamek furtki
+8. Chce wyslac do systemu rozkaz otwarcia bramy, aby otworzyc brame (zamkniecie automatyczne po jakims czasie przez sprzet domofonu)
+9. Chce wyslac do systemu rozkaz przyslania historii zdarzen, aby podejrzec jakie zdarzenia zostaly zarejestrowane
+10. Chce odebrac z systemu historie zdarzen, aby podejrzec jakie zdarzenia zostaly zarejestrowane
+11. Chce wyslac do systemu rozkaz przyslania listy domofonow, aby wiedziec, do ktorych domofonow mam dostep
+12. Chce odebrac z systemu liste domofonow, aby wiedziec, do ktorych domofonow mam dostep
+Tryb administratora
+13. Chce wyslac do systemu rozkaz przyslania listy wszystkich domownikow, aby zarzadzac domownikami
+   Chce odebrac z systemu liste wszystkich domownikow, aby zarzadzac domownikami
+14. Chce wyslac do systemu rozkaz przyslania listy wszystkich domofonow, aby zarzadzac domofonami
+   Chce odebrac z systemu liste wszystkich domofonow, aby zarzadzac domofonami
+15. Chce wyslac do systemu rozkaz dodania nowego domofonu, aby powiadomic system o istnieniu nowego domofonu
+16. Chce wyslac do systemu rozkaz usuniecia domofonu, aby powiadomic system o usunieciu domofonu
+17. Chce wyslac do systemu rozkaz dodania nowego uzytkownika, aby powiadomic system o nowym uzytkowniku
+18. Chce wyslac do systemu rozkaz usuniecia uzytkownika, aby powiadomic system o usunieciu uzytkownika
+
+Interakcja z domownikiem i administratorem, gui
+1. Chce wyswietlic informacje o przyjsciu powiadomienia, aby domownik mogl odebrac powiadomienie
+2. Chce wyswietlic liste 
+3. ...
