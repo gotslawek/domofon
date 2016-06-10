@@ -1,0 +1,21 @@
+Jako administrator:
+===================
+1. Chce zarzadzac lista domownikow, aby przydzielac im uprawnienia do odbioru powiadomien.
+Na telefonie moge zarzadzac lista, ktora pozwala powiazac obsluge wybranego domofonu
+z wybranym domownikiem. Wowczas domownik ten bedzie powiadamiany o wywolaniu.
+
+2. Chce zarzadzac lista lokalizacji, aby moc dodac/usunac domofon.
+Na telefonie moge zarzadzac lista domofonow, ktora pozwala mi dodawac/usuwac/modyfikowac domofony oraz ich opisy.
+Na liscie chce widziec status domofonu, czy domofon nie ma awarii.
+
+3. Chce okreslic, kto ma prawo zmianiac zawartosc listy domownikow oraz listy lokalizacji, aby pozwolic mu zarzadzac tymi listami.
+Na telefonie moge okreslac domownikow, ktorzy moga zarzadzac lista domownikow i lista domofonow, dodawac/usuwac/modyfikowac.
+
+Definiowanie adminow per lokal (np. ustawianie melodii/dzwieku wywolania itd.). 
+
+4. Chce byc powiadamiany o zaistnieniu jakiejkolwiek awarii, aby podjac decyzje co zrobic z problemem.
+Oczekuje przyjscia informacji na telefon o awarii danego domofonu w momencie powstania awarii,
+jesli to mozliwe wraz z opisem awarii.
+
+5. Chce skonfigurowac system samodzielnie, aby ograniczyc pomoc osob trzecich przy instalacji i konfiguracji systemu.
+
