@@ -1,0 +1,13 @@
+Jako gosc:
+===================
+1. Chce wybrac na domofonie numer mieszkania, aby skontaktowac sie z konkretnymi domownikami.
+Podchodze do domofonu, widze, ze domofon dziala, wybieram numer mieszkania, oczekuje na odebranie powiadomienia przez domownika.
+Jestem informowany, ze powiadomienie jest w toku. Jesli domownik odbierze powiadomienie, rozmawiam z domownikiem,
+jesli nie, jestem informowany o braku odbioru powiadomienia, ewentualnie uslysze automatycznie odtwarzana wiadomosc
+i jesli jest taka mozliwosc, moge nagrac wiadomosc dla domownikow. Jestem powiadamiany w jaki sposob moge rozpoczac
+i zakonczyc nagranie wiadomosci i jak najdluzej moge nagrywac.
+Automatycznie odtwarzana wiadomosc moge takze uslyszec natychmiast bez oczekiwania na odebranie powiadomienia.
+Na odbior powiadomienia czekam 40 sek. Po tym czasie ponownie moge wybrac numer.
+Jesli wybiore poprawny numer, klawiatura jest blokowana do momentu zakonczenia rozmowy lub czasu oczekiwania,
+jesli niepoprawny, jestem o tym informowany i moge pod razu wybrac inny numer.
+Jesli podczas obslugi domofonu zaistnieje awaria, jestem o tym powiadamiany.
