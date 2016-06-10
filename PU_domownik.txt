@@ -1,0 +1,105 @@
+Slownik:
+domofon - urzadzenie przy wejciu/bramie
+powiadomienie - powiadomienie telefonu, ze ktos dzwoni domofonem
+domownik - osoba uprawniona do odbioru powiadomien
+administrator - osoba uprawniona do zarzadzania lista lokalizacji i lista domownikow, moze byc rowniez domownikiem
+gosc - osoba uzywajaca domofonu
+wywolanie - wybranie na klawiaturze domofonu numeru mieszkania
+lokalizacja - miejsce zainstalowania domofonu
+system - oprogramowanie odpowiedzialne za kontrole domofonu i interakcje z aplikacja telefonu
+grupa - zbior osob spelniajacych okreslone kryteria
+awaria - blad programowy lub sprzetowy uniemozliwiajacy poprawne dzialanie systemu
+
+Jako domownik:
+==============
+PU_001. Chce byc powiadamiany, ze gosc dzwoni domofonem i z jakiej lokalizacji, aby wiedziec przy ktorym wejsciu gosc oczekuje.
+Jestem w dowolnym miejscu, w pewnym momencie komorka zaczyna dzwonic wybrana melodyjke; po melodyjce poznaje,
+ze gosc dzwoni domofonem z konkretnej lokalizacji. Jesli nie przypisalem melodyjki, odgrywana jest melodyjka domyslna.
+Biore komorke do reki, odblokowuje, Na ekranie widze opis lokalizacji (np. furtka polnocna).
+Moge anulowac lub odebrac powiadomienie. (O anulowaniu gosc nie jest informowany.) Odbieram powiadomienie.
+Chce byc powiadomiony najpozniej 3 sek od rozpoczecia wywolania.
+Jesli w tym samym czasie powiadomienia przychodza z kilku lokalizacji, moge wybrac lokalizacje, z ktorej odbiore powiadomienie.
+Jesli juz inny domownik odbierze powiadomienie przede mna, moje powiadomienie jest przerywane, jestem informowany,
+ze inny uzytkownik odebral powiadomienie.
+Jesli w tym samym czasie powiadomienia przychodza z kilku lokalizacji i inny domownik wybral jedno z nich,
+moge wybrac jedno z pozostalych, z ktorego odbiore powiadomienie.
+
+PU_002. Chce zobaczyc na telefonie twarz goscia, aby wiedziec kto jest gosciem.
+Jesli domofon ma kamerke, po odbiorze powiadomienia (przed decyzja czy odebrac czy nie),
+wraz z opisem lokalizacji, widze obraz goscia na ekranie komorki,
+obraz odswieza sie najwolniej co 2 sek, ma minimalna rozdzielczosc AxB, jest kolorowy, jest ostry.
+
+PU_003. Chce moc porozmawiac z telefonu z gosciem.
+Odbieram powiadomienie i rozmawiam z gosciem. Mozemy jednoczesnie rozmawiac, moge w kazdej chwili zakonczyc rozmowe.
+Moge wyciszyc (mute) moj glos. Oczekuje plynnej rozmowy w obu kierunkach. Podczas rozmowy moge otworzyc furtke lub brame lokalizacji z ktorej dzwoni gosc.
+Jesli w czasie rozmowy przyjdzie powiadomienie z innej lokalizacji, telefon informuje mnie o tym. Moge zakonczyc rozmowe i odebrac to powiadomienie.
+Uzywa PU_001.
+
+PU_004 Chce przypisac wybrana melodyjke do domofonu, aby dzieki niej zidentyfikowac domofon zanim odczytam opis lokalizacji.
+Na telefonie przegladam liste moich lokalizacji (chce miec aktualna liste lokalizacji dostepnych dla mnie)
+i przypisuje melodyjke do lokalizacji. Jesli nie mam przypisanej melodyjki, przypisana jest melodyjka domyslna.
+Jesli pojawi sie nowa lokalizacja, po tym jak przypisalem melodyjki, ma przypisana melodyjke domyslna.
+Jesli usunieta zostanie lokalizacja, widze ja w dalszym ciagu na liscie jako niedostepna (dopoki jej nie usune z mojej listy domofonow).
+
+PU_005. Chce miec mozliwosc wlaczenia podgladu obrazu na domofonie, aby moc w dowolnym momencie sprawdzic co sie dzieje przy domofonie.
+Na telefonie wybieram opcje podgladu obrazu z konkretnej lokalizacji. Na ekranie wyswietla sie obraz z tej lokalizacji. W tym samym czasie
+mozliwe jest korzystanie z podgladu przez wielu domownikow (?)
+Podglad nie bedzie mozliwy jesli trwa rozmowa, aby nie podgladac czyjejs rozmowy (blokowisko)
+
+PU_006. Chce miec mozliwosc wlaczenia podsluchu dzwieku na domofonie, aby moc w dowolnym momencie sprawdzic co sie dzieje przy domofonie.
+Na telefonie wybieram opcje podsluchu z konkretnej lokalizacji. Slysze dzwiek z konkretnej lokalizacji. W tym samym czasie
+mozliwe jest korzystanie z podgladu przez wielu domownikow (?). Osoba stojaca przy domofonie nie slyszy mnie - mam nadawanie dzwieku wylaczone.
+Podluch nie bedzie mozliwy jesli trwa rozmowa, aby nie podsluchiwac czyjejs rozmowy (blokowisko)
+
+PU_007. Chce miec historie powiadomien, aby moc w kazdej chwili sprawdzic kto i kiedy dzwonil domofonem.
+Na telefonie wyswietlam liste historii powiadomien. Z listy moge odczytac lokalizacje,
+numer wybrany na klawiaturze i obraz/zdjecie goscia z domofonu.
+
+PU_008. Chce miec dostep do historii powiadomien z telefonu oraz komputera, aby moc wygodnie przegladac historie w dowolnej lokalizacji.
+Otwieram przegladarke internetowa, loguje sie do panelu obslugi moich domofonow, wyswietlam historie powiadomien. Z listy moge odczytac lokalizacje,
+numer wybrany na klawiaturze i obraz/zdjecie goscia z domofonu.
+
+PU_009. Chce miec dostep do domofonu z poziomu przegladarki www, aby w przypadku braku telefonu rowniez moc sterowac domofonem w danej 
+lokalizacji. 
+Otwieram przegladarke internetowa, loguje sie do panelu obslugi moich domofonow. Przegladarka ma identyczna funkcjonalnosc jak telefon.
+
+PU_010. Chce aby system pozwalal na rozpoznanie osoby dzwoniacej, aby uzytkownik automatycznie dostawal informacje do jakiej grupy nalezy 
+osoba dzwoniaca.
+Kazda osoba dzwoniaca powinna byc zapamietana oraz przypisana do konkretnej grupy. Dodatkowo chce byc powiadamiany jesli osoba 
+dzwoniaca nie zostala jeszcze zarejestrowana przez system.
+
+PU_011. Chce aby system rozpoznawal rejestracje aut gosci dzwoniacych domofonem, aby w przyszlosci moc definiowac okreslone automatyczne 
+akcje w przypadku rozpoznania konkretnej tablicy rejestracyjnej.
+
+PU_012. Chce przekierowac rozpoczeta rozmowe do innego domownika, aby mogl on zamiaast mnie porozmawiac z gosciem
+Podczas rozmowy decyduje sie na przekazanie rozmowy do innego uzytkownika, wybieram go z listy i przekazuje mu rozmowe.
+Podczas przekierowywania generowany jest dzwiek informujacy o probie przekazania rozmowy, slyszy go domownik i gosc,
+podczas przekierowania moge rozmawiac z gosciem, w momencie odebrania przekierowania przez innego domownika,
+moja rozmowa konczona jest automatycznie i kontynuowana przez domownika, do ktorego jest przekierowana rozmowa.
+
+PU_013. Chce otrzymac przekierowana rozmowe, aby moc porozmawiac z gosciem zamiast innego domownika.
+Uzywa PU_001.
+
+PU_014. Dodatkowo chcialbym byc informowany w postaci powiadomienia lub alarmu o zblizajacej sie osobie.
+Do bramy/furtki podchodzi jakas osoba. Chce otrzymac powiadomienie, jesli ta osoba nie nacisnie dzwonka przez 30 sekund od podejscia.
+Jesli osoba nie wciska dzwonka przez dluzszy czas, chce otrzymac alarm
+
+PU_015. System powinien kojarzyc dzwonice osoby.
+Po wykryciu przez system osoby, powinna nastapic jej identyfikacja na podstawie conajmniej jednego zrodla 
+(haslo, RFID, rozpoznawanie twarzy). Informacja kto dzwoni powinna byc przeslana do uzytkownika.
+
+PU_016. Chce miec mozliwosc otwierania/zamykania bramy i furtki.
+Chce miec mozliwosc zamykania/otwierania wskazanego wejscia za pomoca aplikacji na telefonie lub przez przegladarke www.
+Wymagana silna autoryzacja uzytkownika, ktory moze otwierac/zamykac wejscia. Ka\u017cde wydane polecenie musi byc zalogowane.
+
+PU_017. System ma miec mozliwosc podlaczenia wielu zrodel (bramy, furtki, itd.) i wielu odbiorcow (domownicy, znajomi, itd.).
+Chce miec mozliwosc stworzenia listy wejsc (bram, furtek) oraz wielu list odbiorcow a nastepnie przypisac listy odbiorcow do odpowiednich wejsc.
+uzytkownicy powinni widziec tylko te wejscia, do ktorych maja uprawnienia do otwierania/zamykania.
+
+PU_018. Chat, dolaczanie kilku domownikow do rozmowy z gosciem?
+EXTRA, nie na teraz!
+
+PU_019. Nagrywanie rozmow w historii?
+EXTRA, nie na teraz!
+
+PU_020. Otwieranie bramy kodem/pinem/RFID/NFC(telefon) bezposrednio przy wejsciu.
