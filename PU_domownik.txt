@@ -1,14 +1,4 @@
-Slownik:
-domofon - urzadzenie przy wejciu/bramie
-powiadomienie - powiadomienie telefonu, ze ktos dzwoni domofonem
-domownik - osoba uprawniona do odbioru powiadomien
-administrator - osoba uprawniona do zarzadzania lista lokalizacji i lista domownikow, moze byc rowniez domownikiem
-gosc - osoba uzywajaca domofonu
-wywolanie - wybranie na klawiaturze domofonu numeru mieszkania
-lokalizacja - miejsce zainstalowania domofonu
-system - oprogramowanie odpowiedzialne za kontrole domofonu i interakcje z aplikacja telefonu
-grupa - zbior osob spelniajacych okreslone kryteria
-awaria - blad programowy lub sprzetowy uniemozliwiajacy poprawne dzialanie systemu
+
 
 Jako domownik:
 ==============
