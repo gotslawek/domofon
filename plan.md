@@ -1,10 +1,10 @@
 w24
  1. protokol system - domofon
-  a. sugestia co do metody, 
-  b. wiadomosci kontrolne/konfiguracyjne oraz przezylanie danych (dzwiek i obraz)
+ 1.1. sugestia co do metody, 
+ 1.2. wiadomosci kontrolne/konfiguracyjne oraz przezylanie danych (dzwiek i obraz)
  2. protokol system - aplikacja
-  a. sugestia co do metody, 
-  b. wiadomosci kontrolne/konfiguracyjne oraz przezylanie danych (dzwiek i obraz)
+ 2.1. sugestia co do metody, 
+ 2.2. wiadomosci kontrolne/konfiguracyjne oraz przezylanie danych (dzwiek i obraz)
  3. wstepnie przemyslenie technologii dla poszczegolnych komponentow
  4. wstepne zaproponowanie sprzetu (???)
  5. aplikacja (panel uzytkownika) + strona www (panel administracyjny + uzytkownika) - roznice, zalety, wady, problemy ktore mozna napotkac
