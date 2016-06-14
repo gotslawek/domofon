@@ -30,3 +30,5 @@ Interakcja z domownikiem i administratorem, gui
 1. Chce wyswietlic informacje o przyjsciu powiadomienia, aby domownik mogl odebrac powiadomienie
 2. Chce wyswietlic liste 
 3. ...
+
+http://stackoverflow.com/questions/22073970/how-to-embed-vlc-media-player-to-my-android-app
