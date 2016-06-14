@@ -1,10 +1,21 @@
+w24
+ 1. protokol system - domofon
+  a. sugestia co do metody, 
+  b. wiadomosci kontrolne/konfiguracyjne oraz przezylanie danych (dzwiek i obraz)
+ 2. protokol system - aplikacja
+  a. sugestia co do metody, 
+  b. wiadomosci kontrolne/konfiguracyjne oraz przezylanie danych (dzwiek i obraz)
+ 3. wstepnie przemyslenie technologii dla poszczegolnych komponentow
+ 4. wstepne zaproponowanie sprzetu (???)
+ 5. aplikacja (panel uzytkownika) + strona www (panel administracyjny + uzytkownika) - roznice, zalety, wady, problemy ktore mozna napotkac
+
 w23
- 1. rozpisac przypadki uzycia dla aktorow (domofon, gosc, router (niewidoczny), system, aplikacja, administrator oraz domownik) - Slawek W.
- 2. zdefiniowac zdarzenia na linii: domofon - system
- 3. zdefiniowac zdarzenia na linii: aplikacja - system
- 4. zdefiniowac zdarzenia na linii: domownik - aplikacja
- 5. zdefiniowac zdarzenia na linii: gosc - domofon
- 6. zdefiniowac zdarzenia na linii: administrator - system
+ 1. rozpisac przypadki uzycia dla aktorow (domofon, gosc, router (niewidoczny), system, aplikacja, administrator oraz domownik) - Slawek W. - ok
+ 2. zdefiniowac zdarzenia na linii: domofon - system       - ok
+ 3. zdefiniowac zdarzenia na linii: aplikacja - system     - ok
+ 4. zdefiniowac zdarzenia na linii: domownik - aplikacja   - ok
+ 5. zdefiniowac zdarzenia na linii: gosc - domofon         - ok
+ 6. zdefiniowac zdarzenia na linii: administrator - system - ok
 
 w22
  1. rozwinac dotychczasowe wpisy o historyjki (req_spec.txt). (w23)
