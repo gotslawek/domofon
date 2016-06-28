@@ -26,33 +26,27 @@ informuje o tym system <<PROT_DOM_SYS_PU_020>>.
 
 DOMOFON_003. Chce otworzyc zamek furtki, aby gosc mogl wejsc.
 Jestem w dowolnym stanie, otrzymuje informacje z systemu, aby otworzyc furtke <<PROT_DOM_SYS_PU_004>>,
-wlaczam elektrozamek furtki <<DOMOFON_018>>.
+Wysylam sygnal do podsystemu sterowania furtka, aby otworzyl furtke <<OTWORZ_ELEKTROZAMEK>>.
 
 DOMOFON_004. Chce wiedziec, w ktorym momencie furtka jest otwarta, aby powiadomic o tym system.
-Jestem w dowolnym stanie. Jesli dostane informacje z czujnika furtki, ze furtka jest otwierana
+Jestem w dowolnym stanie. Jesli dostane informacje z podsystemu sterowania furtka, ze furtka jest otwierana
 wysylam informacje o otwarciu furtki do systemu, aby zarejestrowac to zdarzenie <<PROT_DOM_SYS_PU_005>>
-Startuje licznik czasu otwarcia furtki.
 
 DOMOFON_005. Chce wiedziec, w ktorym momencie furtka jest zamknieta, aby powiadomic o tym system.
-Jestem w dowolnym stanie. Jesli dostane informacje z czujnika furtki, ze furtka jest zamknieta,
+Jestem w dowolnym stanie. Jesli dostane informacje z podsystemu sterowania furtka, ze furtka jest zamknieta,
 wysylam informacje o zamknieciu furtki do systemu, aby zarejestrowac zdarzenie <<PROT_DOM_SYS_PU_006>>
-Resetuje i zatrzymuje licznik czasu otwarcia furtki.
 
 DOMOFON_006. Chce otworzyc brame, aby gosc mogl wjechac samochodem
 Jestem w dowolnym stanie, otrzymuje informacje z systemu, aby otworzyc brame <<PROT_DOM_SYS_PU_007>>,
-wlaczam silownik bramy <<DOMOFON_016>>, aby otworzyc brame. Silownik jest wlaczony do momentu pelnego otwarcia bramy.
-W momencie pelnego otwarcia bramy, silownik wylacza sie samoczynnie.
-Startuje licznik maksymalnego czasu otwarcia bramy.
+do podsystemu sterowania brama wysylam sygnal otwaarcia bramy <<OTWORZ_BRAME>>, aby otworzyc brame.
 
 DOMOFON_007. Chce wiedziec, w ktorym momencie brama jest w pelni otwarta, aby powiadomic o tym system.
-Jestem w dowolnym stanie. Jesli dostane informacje z czujnika bramy, ze brama jest w pelni otwarta,
+Jestem w dowolnym stanie. Jesli dostane informacje z podsystemu sterowania brama, ze brama jest w pelni otwarta,
 wysylam informacje o otwarciu bramy do systemu, aby zarejestrowac zdarzenie <<PROT_DOM_SYS_PU_008>>
-Startuje licznik czasu pelnego otwarcia bramy.
 
 DOMOFON_008. Chce wiedziec, w ktorym momencie brama jest zamknieta, aby powiadomic o tym system.
-Jestem w dowolnym stanie. Jesli dostane informacje z czujnika bramy, ze brama jest zamknieta,
+Jestem w dowolnym stanie. Jesli dostane informacje z podsystemu sterowania brama, ze brama jest zamknieta,
 wysylam informacje o zamknieciu bramy do systemu, aby zarejestrowac zdarzenie <<PROT_DOM_SYS_PU_010>>
-Resetuje i zatrzymuje licznik czasu pelnego otwarcia bramy.
 
 DOMOFON_010. Chce robic zdjecie kamera, gdy ktos podejdzie do domofonu lub podjedzie samochodem,
 aby system mogl rozpoznawac osoby podchodzace do domofonu oraz samochody podjezdzajace pod brame.
@@ -76,38 +70,80 @@ i rozpoczynam cykliczne wysylanie obrazu <<PROT_DOM_SYS_PU_017>> i dzwieku <<PRO
 o zakonczeniu podgladu i podsluchu <<PROT_DOM_SYS_PU_013>>, przechodze wowczas w stan oczekiwania. Podglad i podsluch moga trwac maksymalnie 1 min ?
 Jesli jestem w stanie rozmowy wlaczenie podgladu i podsluchu nie jest mozliwe. Sytuacje ta zglaszam do systemu.
 
-DOMOFON_014. Chce wiedziec, czy furtka nie jest zbyt dlugo otwarta, aby powiadomic o tym system.
-Jestem w dowolnym stanie. Jesli furtka zostala otwarta uruchamiam licznik czasu otwarcia bramy, aby okreslic, czy furtka nie jest zbyt dlugo otwarta.
-Co kazde zliczenie licznika czasu otwarcia bramy, wysylam alarm do systemu <<PROT_DOM_SYS_PU_016>>, jesli furtka zostanie zamknieta wylaczam licznik.
+DOMOFON_016. Chce wyslac sygnal otwarcia bramy do podsystemu sterowania brama, aby otworzyl brame <<OTWORZ_BRAME>>
 
-DOMOFON_015. Chce wiedziec, czy brama nie jest zbyt dlugo otwarta, aby powiadomic o tym system.
-Jestem w dowolnym stanie. Jesli brama jest zbyt dlugo otwarta, wysylam alarm do systemu.
+DOMOFON_017. Chce wyslac sygnal zamkniecia bramy do podsystemu sterowania brama, aby zamknal brame <<ZAMKNIJ_BRAME>>
 
-DOMOFON_016. Chce wyslac sygnal otwarcia bramy do silownika, aby otworzyl brame
-
-DOMOFON_017. Chce wyslac sygnal zamkniecia bramy do silownika, aby zamknal brame
-
-DOMOFON_018. Chce wyslac sygnal otwarcia furtki do elektrozamka, aby otworzyl furtke
+DOMOFON_018. Chce wyslac sygnal otwarcia furtki do podsystemu sterowania furtka, aby otworzyl furtke <<OTWORZ_ELEKTROZAMEK>>
 
 DOMOFON_019. Chce odpowiednio zareagowac na powrot zasilania, aby sprawdzic stan sterowanych przeze mnie urzadzen.
 
 
+Jako podsystem sterowania brama
+===================
+
+ZAMKNIJ_BRAME_PO_ZADANYM_CZASIE. Chce zamknac brame po zadanym czasie od otwarcia, aby nie byla caly czas otwarta.
+Po odliczeniu czasu maksymalnego czasu otwarcia bramy, wysylam sygnal do silownika, aby zamknal brame <<ZAMKNIECIE_BRAMY>>.
+
+ZAMKNIJ_BRAME Chce zamknac brame, aby nie byla otwarta.
+Po otrzymaniu rozkazu zamkniecia bramy przez domofon wysylam sygnal zamkniecia bramy do silownika <<SILOWNIK_ZAMKNIJ_BRAME>>
+
+OTWORZ_BRAME Chce otworzyc brame, aby mozna bylo wjechac samochodem.
+Po otrzymaniu rozkazu otwarcia bramy przez domofon wysylam sygnal otwarcia bramy do silownika <<SILOWNIK_OTWORZ_BRAME>>
+i resetuje i startuje licznik maksymalnego czasu otwarcia bramy.
+Silownik jest wlaczony do momentu pelnego otwarcia bramy.
+W momencie pelnego otwarcia bramy, silownik wylacza sie samoczynnie.
+
+
+SILOWNIK_ZAMKNIJ_BRAME Chce wyslac do silownika sygnal zamkniecia bramy, aby silownik zamknal brame
+Wysylam sygnal zamkniecia bramy do silownika.
+Silownik jest wlaczony do momentu zamkniecia bramy.
+W momencie zamkniecia bramy, silownik wylacza sie samoczynnie.
+
+SILOWNIK_OTWORZ_BRAME Chce wyslac do silownika sygnal otwarcia bramy, aby silownik otworzyl brame
+Wysylam sygnal otwarcia bramy do silownika.
+
+WYSLIJ_INFO_BRAMA_OTWARTA Chce wyslac do domofonu informacje, ze brama jest otwarta, aby przeslac informacje do systemu.
+Po otrzymaniu informacji z silownika, ze brama jest w pelni otwarta powiadamiam domofon, ze brama jest w pelni otwarta <<DOMOFON_007>>.
+Resetuje i startuje licznik czasu pelnego otwarcia bramy.
+
+WYSLIJ_INFO_BRAMA_ZAMKNIETA Chce wyslac do domofonu informacje, ze brama jest zamknieta, aby przeslac informacje do systemu.
+Po otrzymaniu informacji z silownika, ze brama jest zamknieta, powiadamiam domofon, ze brama jest zamknieta <<DOMOFON_008>>.
+
+
+Jako podsystem sterowania furtka
+===================
+
+OTWORZ_ELEKTROZAMEK Chce otworzyc elektrozamek furtki, aby otworzyc furtke.
+Wlaczam elektrozamek furtki <<ELEKTROZAMEK_OTWORZ_FURTKE>>.
+
+ELEKTROZAMEK_OTWORZ_FURTKE Chce wyslac do elektrozamka sygnal otwarcia furtki, aby elektrozamek zwolnil zamek furtki
+Wysylam sygnal otwarcia elektrozamka.
+
+WYSLIJ_INFO_FURTKA_OTWARTA Chce wyslac do domofonu informacje, ze furtka jest otwarta, aby przeslac informacje do systemu.
+Po otrzymaniu informacji z czujnika otwarcia furtki, ze furtka jest otwarta, powiadamiam domofon, ze furtka jest otwarta <<DOMOFON_004>>.
+Resetuje i startuje licznik czasu pelnego otwarcia bramy.
+
+WYSLIJ_INFO_FURTKA_ZAMKNIETA Chce wyslac do domofonu informacje, ze furtka jest zamknieta, aby przeslac informacje do systemu.
+Po otrzymaniu informacji z czujnika zamkniecia furtki, ze furtka jest zamknieta, powiadamiam domofon, ze furtka jest zamknieta <<DOMOFON_005>>.
+
+
 Jako licznik maksymalnego czasu otwarcia bramy
 ===================
-LICZNIK_MAX_OTW_BRAMY_001. Chce zamknac brame po 20 sek od otwarcia, aby nie byla caly czas otwarta.
-Po odliczeniu czasu, wysylam sygnal zamkniecia bramy do silownika, aby zamknac brame <<DOMOFON_017>>.
+ZAMKNIJ_BRAME_PO_ZADANYM_CZASIE. Chce zamknac brame po zadanym czasie od jej otwarcia, aby nie byla caly czas otwarta.
+Po odliczeniu zadanego czasu, wywoluje sygnal zamkniecia bramy przez silownik <<SILOWNIK_ZAMKNIJ_BRAME>>.
 Ustawiam ponowne zliczanie, aby wysylac sygnal cyklicznie.
 
 Jako licznik czasu pelnego otwarcia bramy
 ===================
-LICZNIK_PELN_OTW_BRAMY_001. Chce wyslac do systemu informacje o otwarciu bramy, aby zapisac ja w historii zdarzen.
-Po odliczeniu czasu, wysylam do systemu informacje o otwarciu bramy <<PROT_DOM_SYS_PU_008>>.
+WYSLIJ_INFO_BRAMA_CALY_CZAS_OTWARTA. Chce wyslac do domofonu informacje, ze brama jest caly czas otwarta, aby przeslac informacje do systemu, aby zapisac ja w historii zdarzen.
+jesli brama jest otwarta dluzej niz zadany czas, po odliczeniu czasu, wysylam do domofonu informacje o otwarciu bramy <<WYSLIJ_INFO_BRAMA_OTWARTA>>.
 Ustawiam ponowne zliczanie, aby wysylac informacje cyklicznie.
 
-Jako licznik licznik czasu otwarcia furtki
+Jako licznik czasu otwarcia furtki
 ===================
-LICZNIK_OTW_FURTKI_001. Chce wyslac do systemu informacje o otwarciu furtki, aby zapisac ja w historii zdarzen.
-Po odliczeniu czasu, wysylam do systemu informacje o otwarciu furtki <<PROT_DOM_SYS_PU_005>>.
+WYSLIJ_INFO_FURTKA_CALY_CZAS_OTWARTA. Chce wyslac do systemu informacje, ze furtka jest caly czas otwarta, aby przeslac informacje do systemu, aby zapisac ja w historii zdarzen.
+jesli furtka jest otwarta dluzej niz zadany czas, po odliczeniu czasu, wysylam do domofonu informacje o otwarciu furtki <<WYSLIJ_INFO_FURTKA_OTWARTA>>.
 Ustawiam ponowne zliczanie, aby wysylac informacje cyklicznie.
 
 
