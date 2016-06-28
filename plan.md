@@ -1,3 +1,17 @@
+w26
+ 1. podtrzymanie komunikacji client - system/serwer (zewnetrzne/publiczne IP) - app/www
+  * (alternatywa) system lokalny na ipv6
+ 2. rozjerzec sie za serwerem (przesylanie audio/wideo + przesylanie komunikatow kontrolnych)
+ 3. baza danych lub alternatywa (pliki xml, lekka baza danych)
+  * wspieranie wielowoatkowych polaczen z baza
+ 4. propozycja technologii dla klienta app, klienta www (python django), app na telefonie
+ 5. propozycja technologii dla serwera (systemu)
+ 6. uporzadkowanie PUs
+ 7. diagramy UMLowe dla domofonu
+ 8. sugerowane protokoly dla roznego typu polaczen:
+  * po sieci: mqtt, rest itd.
+  * po kablu: modbus
+
 w24
  1. protokol system - domofon: Slawek M. (propozycja technologii M2M) 
   1.1. sugestia co do metody
