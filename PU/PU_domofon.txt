@@ -1,192 +1,242 @@
-Jako domofon:
+Jako domofon (DOMOFON):
 ===================
-to juz przypadki niewidoczne dla klienta
 
-DOMOFON_001. Chce wyslac powiadomienie o wybraniu numeru do systemu, aby system wiedzial, z ktorymi domownikami ma nawiazac polaczenie
-Jestem w stanie oczekiwania. Po wprowadzeniu numeru mieszkania przez goscia <<DOMOFON_002>> przechodze w stan nawiazywania rozmowy
-- blokuje klawiature (lub ignoruje wcisniecia przyciskow) i wysylam wybrany numer do systemu <<PROT_DOM_SYS_PU_001>>,
-oczekuje na informacje z systemu, czy numer jest prawidlowy. Jesli numer jest prawidlowy, oczekuje na informacje z systemu
-czy powiadomienie jest przyjete <<PROT_DOM_SYS_PU_002>>. Jesli powiadomienie jest przyjete, przechodze w stan rozmowy
-- wysylam dzwiek i obraz <<PROT_DOM_SYS_PU_018>> <<PROT_DOM_SYS_PU_017>> i odbieram dzwiek <<PROT_DOM_SYS_PU_019>>,
-az do momentu otrzymania informacji z systemu o zakonczeniu rozmowy przez domownika <<PROT_DOM_SYS_PU_003>>.
-Sytuacje wyjatkowe:
- - jesli numer jest nieprawidlowy, informuje o tym goscia.
- - jesli powiadomienie nie jest przyjete, informuje o tym goscia.
- - nie otrzymuje informacji zwrotnej z systemu, informuje o tym goscia jako wystapienie awarii,
-   zglaszam alarm do systemu <<PROT_DOM_SYS_PU_016>> (moze sie nie udac przy braku polaczenia z systemem ...)
-Przechodze w stan oczekiwania.
+ROZPOZNAJ_CZY_DANE_CZY_AUTORYZACJA. Chce rozpoznac typ danych z urzadzen wejsciowych, aby przeslac je do analizy do systemu.
+Po odebraniu danych z podsystemu odczytu danych od goscia, rozpoznaje, czy sa sa to zwykle dane, czy kod
+autoryzacji. Jesli sa to zwykle dane, to wysylam do systemu zapytanie o wybrany numer (mieszkania) <<DOMOFON::SYSTEM_POTWIERDZ_NUMER>>,
+jesli kod autoryzacji - zapytanie o autoryzacje <<DOMOFON::SYSTEM_POTWIERDZ_AUTORYZACJE>>.
+
+SYSTEM_POTWIERDZ_AUTORYZACJE. Chce wyslac powiadomienie o autoryzacji do systemu, aby system zautoryzowal goscia.
+Wysylam do systemu zapytanie o potwierdzenie autoryzacji <<MH::WYSLIJ_KOD_AUTORYZACJI_DO_SYSTEMU>>
+i oczekuje potwierdzenia autoryzacji <<MH::SYSTEM_ZWROC_POTWIERDZENIE_AUTORYZACJI>>. Jesli autoryzacja jest potwierdzona,
+otwieram furtke <<DOMOFON::PSF_OTWORZ_FURTKE>>, jesli nie, informuje o tym goscia <<DISPLAY::BRAK_AUTORYZACJI>>.
+Je\u015bli nie mo\u017cna nawi\u0105za\u0107 po\u0142\u0105czenia z systemem wy\u015bwietl informacje dla go\u015bcia <<DISPLAY::NIE_MOZNA_NAWIAZAC_POLACZENIA_Z_SYSTEMEM>>
+
+SYSTEM_POTWIERDZ_NUMER. Chce wyslac powiadomienie o wybraniu numeru do systemu, aby system wiedzial, z ktorymi domownikami ma nawiazac polaczenie
+Wysylam wybrany numer do systemu <<MH::WYSLIJ_NUMER_Z_KLAWIATURY_DO_SYSTEMU>>, oczekuje na informacje z systemu <<MH::SYSTEM_ZWROC_POTWIERDZENIE_NUMERU>>,
+czy numer jest prawidlowy. Jesli numer jest nieprawidlowy, informuje o tym goscia <<DISPLAY::NIEPRAWIDLOWY_NUMER_MIESZKANIA>>, jesli numer jest prawidlowy, oczekuje na informacje
+z systemu czy powiadomienie jest przyjete <<MH::POWIADOM_DOMOFON_SLUCHAWKA_PODNIESIONA>>.
+Jesli powiadomienie nie jest przyjete, informuje o tym goscia <<DISPLAY::NIE_PODNIESIONO_SLUCHAWKI>>, jesli powiadomienie jest przyjete,
+wysylam strumien obrazu i dzwieku <<POS::WYSYLAJ_STRUMIEN_OBRAZU_I_DZWIEKU_DO_SYSTEMU>>
+i odbieram strumien dzwieku <<POS::ODTWARZAJ_DZWIEK_W_GLOSNIKU>>
+Je\u015bli nie mo\u017cna nawi\u0105za\u0107 po\u0142\u0105czenia z systemem wy\u015bwietl informacje dla go\u015bcia <<DISPLAY::NIE_MOZNA_NAWIAZAC_POLACZENIA_Z_SYSTEMEM>>
+
+PSF_OTWORZ_FURTKE. Chce otworzyc zamek furtki, aby gosc mogl wejsc.
+Wysylam sygnal otwrcia furtki <<PSF::OTWORZ_FURTKE>> do podsystemu sterowania furtka.
+
+POWIADOM_SYSTEM_FURTKA_JEST_WLASNIE_OTWARTA. Chce wiedziec, w ktorym momencie furtka jest otwarta, aby powiadomic o tym system.
+Otrzymuje informacje z podsystemu sterowania furtka, ze furtka jest otwierana
+wysylam informacje o otwarciu furtki do systemu <<MH::POWIADOM_SYSTEM_FURTKA_OTWARTA>>
+
+POWIADOM_SYSTEM_FURTKA_JEST_WLASNIE_ZAMKNIETA. Chce wiedziec, w ktorym momencie furtka jest zamknieta, aby powiadomic o tym system.
+Otrzymuje informacje z podsystemu sterowania furtka, ze furtka jest zamknieta,
+wysylam informacje o zamknieciu furtki do systemu <<MH::POWIADOM_SYSTEM_FURTKA_ZAMKNIETA>>
+
+PSB_OTWORZ_BRAME. Chce otworzyc brame, aby gosc mogl wjechac samochodem
+Wysylam sygnal otwarcia bramy <<PSB::OTWORZ_BRAME>> do podsystemu sterowania brama.
+
+POWIADOM_SYSTEM_BRAMA_W_PELNI_OTWARTA. Chce wiedziec, w ktorym momencie brama jest w pelni otwarta, aby powiadomic o tym system.
+Otrzymuje informacje z podsystemu sterowania brama, ze brama jest w pelni otwarta,
+wysylam informacje o otwarciu bramy do systemu <<MH::POWIADOM_SYSTEM_BRAMA_OTWARTA>>
+
+POWIADOM_SYSTEM_BRAMA_W_PELNI_ZAMKNIETA. Chce wiedziec, w ktorym momencie brama jest zamknieta, aby powiadomic o tym system.
+Otrzymuje informacje z podsystemu sterowania brama, ze brama jest zamknieta,
+wysylam informacje o zamknieciu bramy do systemu <<MH::POWIADOM_SYSTEM_BRAMA_ZAMKNIETA>>
+
+PSB_ZAMKNIJ_BRAME. Chce zamknac brame, abym mogl ja zamykac na zyczenie
+Wysylam sygnal zamkniecia bramy <<PSB::ZAMKNIJ_BRAME>> do podsystemu sterowania brama.
+
+POS_KAMERA_ZROB_ZDJECIE. Chce robic zdjecie kamera, gdy ktos podejdzie do domofonu lub podjedzie samochodem, aby je wyslac do analizy do systemu.
+W momencie otrzymania informacji z czujnika ruchu, robie zdjecie <<POS::KAMERA_ZROB_ZDJECIE>> i wysylam je do analizy do systemu <<MH::WYSLIJ_ZDJECIE_DO_SYSTEMU>>.
+
+POS_WLACZ_PODGLAD_I_PODSLUCH. Chce wlaczyc podglad i podsluch, aby domownik mogl zobaczyc i uslyszec co sie dzieje przy domofonie.
+Jesli jestem w stanie rozmowy wlaczenie podgladu i podsluchu nie jest mozliwe. Sytuacje ta zglaszam do systemu <<MH::WYSLIJ_ALARM_DO_SYSTEMU>>.
+Jesli nie jestem w stanie rozmowy, rozpoczynam wysylanie strumienia obrazu i dzwieku  do systemu
+<<POS::WYSYLAJ_STRUMIEN_OBRAZU_I_DZWIEKU_DO_SYSTEMU>>. Wlaczam licznik maksymalnego czasu podgladu i podsluchu.
+
+POS_ZAKONCZ_ODBIOR_I_WYSYLANIE. Chce zakonczyc rozmowe, aby nie przesylac juz wizji i glosu i nie odbierac glosu.
+Koncze wysylanie obrazu i dzwieku <<DOMOFON::POS_WYLACZ_PODGLAD_I_PODSLUCH>> i koncze odtwarzanie dzwieku w glosniku <<DOMOFON::POS_ZAKONCZ_ODTWARZANIE_DZWIEKU>>
+
+POS_WYLACZ_PODGLAD_I_PODSLUCH. Chce wylaczyc podglad i podsluch, aby domownik nie mogl zobaczyc i uslyszec co sie dzieje przy domofonie.
+Koncze wysylanie obrazu i dzwieku <<POS::ZAKONCZ_ODBIOR_I_WYSYLANIE_OBRAZU_I_DZWIEKU_DO_SYSTEMU>>.
+
+POS_ZAKONCZ_ODTWARZANIE_DZWIEKU. Chce zakonczyc odtwarzanie dzwieku w glosniku, aby gosc nie slyszal domownika.
+Koncze odtwarzanie dzwieku w glosniku <<POS::ZAKONCZ_ODTWARZANIE_DZWIEKU>>.
+
+ZAREAGUJ_NA_POWROT_ZASILANIA. Chce odpowiednio zareagowac na powrot zasilania, aby sprawdzic stan sterowanych przeze mnie urzadzen.
 
 
-DOMOFON_002. Chce odczytac z klawiatury, jakie przyciski wybral gosc, aby zlozyc je w numer.
-Jestem w stanie oczekiwania. Do domofonu podchodzi gosc i wciska przyciski na klawiaturze.
+
+Jako podsystem odczytu danych od goscia (POD)
+===================
+CZYTAJ_URZADZENIA_WEJSCIOWE. Chce uzyskac informacje od urzadzen wejsciowych, na ktorym z nich pojawil sie odczyt danych, aby odczytac te dane.
+Od jednego z urz\u0105dzen wejsciowych uzyskuje informacje, ze pojawily sie na jego wejsciu dane.
+Odczytuje dane z tego urzadzenia <<CZYTAJ_KLAWIATURE>> lub <<CZYTAJ_RFID>> lub <<CZYTAJ_NFC>>,
+blokuje odczyt danych z pozostalych urzadzen wejsciowych, przekazuje domofonowi dane
+z konkretnego urzadzenia wejsciowego <<DOMOFON::ROZPOZNAJ_CZY_DANE_CZY_AUTORYZACJA>>.
+
+CZYTAJ_KLAWIATURE. Chce odczytac cyfry z klawiatury, aby zlozyc je w numer.
 Po wcisnieciu 4 przyciskow (?) skladam je w numer mieszkania. Jesli w ciagu 10s(?) nie
-wybrano 4 przyciskow, anuluje skladanie. Oczekuje na ponowne wprowadzenie numeru.
-Jesli jestem w stanie podgladu i podsluchu, koncze wysylanie obrazu i dzwieku, opuszczam ten stan,
-informuje o tym system <<PROT_DOM_SYS_PU_020>>.
+wybrano 4 przyciskow, anuluje skladanie.
 
-DOMOFON_003. Chce otworzyc zamek furtki, aby gosc mogl wejsc.
-Jestem w dowolnym stanie, otrzymuje informacje z systemu, aby otworzyc furtke <<PROT_DOM_SYS_PU_004>>,
-Wysylam sygnal do podsystemu sterowania furtka, aby otworzyl furtke <<OTWORZ_ELEKTROZAMEK>>.
+CZYTAJ_RFID. Chce odczytac kod RF.
 
-DOMOFON_004. Chce wiedziec, w ktorym momencie furtka jest otwarta, aby powiadomic o tym system.
-Jestem w dowolnym stanie. Jesli dostane informacje z podsystemu sterowania furtka, ze furtka jest otwierana
-wysylam informacje o otwarciu furtki do systemu, aby zarejestrowac to zdarzenie <<PROT_DOM_SYS_PU_005>>
-
-DOMOFON_005. Chce wiedziec, w ktorym momencie furtka jest zamknieta, aby powiadomic o tym system.
-Jestem w dowolnym stanie. Jesli dostane informacje z podsystemu sterowania furtka, ze furtka jest zamknieta,
-wysylam informacje o zamknieciu furtki do systemu, aby zarejestrowac zdarzenie <<PROT_DOM_SYS_PU_006>>
-
-DOMOFON_006. Chce otworzyc brame, aby gosc mogl wjechac samochodem
-Jestem w dowolnym stanie, otrzymuje informacje z systemu, aby otworzyc brame <<PROT_DOM_SYS_PU_007>>,
-do podsystemu sterowania brama wysylam sygnal otwaarcia bramy <<OTWORZ_BRAME>>, aby otworzyc brame.
-
-DOMOFON_007. Chce wiedziec, w ktorym momencie brama jest w pelni otwarta, aby powiadomic o tym system.
-Jestem w dowolnym stanie. Jesli dostane informacje z podsystemu sterowania brama, ze brama jest w pelni otwarta,
-wysylam informacje o otwarciu bramy do systemu, aby zarejestrowac zdarzenie <<PROT_DOM_SYS_PU_008>>
-
-DOMOFON_008. Chce wiedziec, w ktorym momencie brama jest zamknieta, aby powiadomic o tym system.
-Jestem w dowolnym stanie. Jesli dostane informacje z podsystemu sterowania brama, ze brama jest zamknieta,
-wysylam informacje o zamknieciu bramy do systemu, aby zarejestrowac zdarzenie <<PROT_DOM_SYS_PU_010>>
-
-DOMOFON_010. Chce robic zdjecie kamera, gdy ktos podejdzie do domofonu lub podjedzie samochodem,
-aby system mogl rozpoznawac osoby podchodzace do domofonu oraz samochody podjezdzajace pod brame.
-W momencie otrzymania informacji z czujnika ruchu, robie zdjecie i wysylam je do analizy do systemu <<PROT_DOM_SYS_PU_011>>
-oraz aby system zapisal je w historii zdarzen.
-
-DOMOFON_011. Chce wyswietlac dla goscia informacje o awarii, jesli takowa wystepuje, aby gosc wiedzial, ze domofon nie dziala
-Jestem w dowolnym stanie. W momencie wystapienia awarii przechodze w stan awarii,
-wyswietlam informacje dla goscia, ze domofon nie dziala, jesli awaria zostanie usunieta,
-koncze wyswietlac informacje o awarii i przechodze w stan oczekiwania.
-
-DOMOFON_012. Chce uzyskac kod autoryzujacy od goscia, aby otworzyc furtke.
-Jestem w stanie oczekiwania. Z klawiatury odczytuje numer <<DOMOFON_002>> lub odczytuje z innego urzadzenia wejsciowego
-dane, ktore posluza do autoryzacji (pin/RFID/NFC).
-Przechodze w stan weryfikacji. Dane wysylam do systemu <<PROT_DOM_SYS_PU_014>> i oczekuje potwierdzenia autoryzacji <<PROT_DOM_SYS_PU_015>>.
-Jesli autoryzacja jest potwierdzona, otwieram furtke, jesli nie, informuje o tym goscia. Przechodze w stan oczekiwania.
-
-DOMOFON_013. Chce wlaczyc podglad i podsluch, aby domownik mogl zobaczyc i uslyszec co sie dzieje przy domofonie.
-Jestem w stanie oczekiwania. Otrzymuje informacje z systemu, aby wlaczyc podglad i podsluch <<PROT_DOM_SYS_PU_012>>, przechodze w stan podgladu i podsluchu
-i rozpoczynam cykliczne wysylanie obrazu <<PROT_DOM_SYS_PU_017>> i dzwieku <<PROT_DOM_SYS_PU_018>> do systemu, az do momentu otrzymania informacji z systemu
-o zakonczeniu podgladu i podsluchu <<PROT_DOM_SYS_PU_013>>, przechodze wowczas w stan oczekiwania. Podglad i podsluch moga trwac maksymalnie 1 min ?
-Jesli jestem w stanie rozmowy wlaczenie podgladu i podsluchu nie jest mozliwe. Sytuacje ta zglaszam do systemu.
-
-DOMOFON_016. Chce wyslac sygnal otwarcia bramy do podsystemu sterowania brama, aby otworzyl brame <<OTWORZ_BRAME>>
-
-DOMOFON_017. Chce wyslac sygnal zamkniecia bramy do podsystemu sterowania brama, aby zamknal brame <<ZAMKNIJ_BRAME>>
-
-DOMOFON_018. Chce wyslac sygnal otwarcia furtki do podsystemu sterowania furtka, aby otworzyl furtke <<OTWORZ_ELEKTROZAMEK>>
-
-DOMOFON_019. Chce odpowiednio zareagowac na powrot zasilania, aby sprawdzic stan sterowanych przeze mnie urzadzen.
+CZYTAJ_NFC. Chce odczytac kod NFC.
 
 
-Jako podsystem sterowania brama
+Jako podsystem sterowania brama (PSB)
 ===================
 
-ZAMKNIJ_BRAME_PO_ZADANYM_CZASIE. Chce zamknac brame po zadanym czasie od otwarcia, aby nie byla caly czas otwarta.
-Po odliczeniu czasu maksymalnego czasu otwarcia bramy, wysylam sygnal do silownika, aby zamknal brame <<ZAMKNIECIE_BRAMY>>.
+ZAMKNIJ_BRAME. Chce zamknac brame, aby nie byla otwarta.
+Wysylam sygnal zamkniecia bramy do silownika <<PSB::SILOWNIK_ZAMKNIJ_BRAME>>
 
-ZAMKNIJ_BRAME Chce zamknac brame, aby nie byla otwarta.
-Po otrzymaniu rozkazu zamkniecia bramy przez domofon wysylam sygnal zamkniecia bramy do silownika <<SILOWNIK_ZAMKNIJ_BRAME>>
-
-OTWORZ_BRAME Chce otworzyc brame, aby mozna bylo wjechac samochodem.
-Po otrzymaniu rozkazu otwarcia bramy przez domofon wysylam sygnal otwarcia bramy do silownika <<SILOWNIK_OTWORZ_BRAME>>
+OTWORZ_BRAME. Chce otworzyc brame, aby mozna bylo wjechac samochodem.
+Wysylam sygnal otwarcia bramy do silownika <<PSB::SILOWNIK_OTWORZ_BRAME>>
 i resetuje i startuje licznik maksymalnego czasu otwarcia bramy.
 Silownik jest wlaczony do momentu pelnego otwarcia bramy.
 W momencie pelnego otwarcia bramy, silownik wylacza sie samoczynnie.
 
-
-SILOWNIK_ZAMKNIJ_BRAME Chce wyslac do silownika sygnal zamkniecia bramy, aby silownik zamknal brame
+SILOWNIK_ZAMKNIJ_BRAME. Chce wyslac do silownika sygnal zamkniecia bramy, aby silownik zamknal brame
 Wysylam sygnal zamkniecia bramy do silownika.
 Silownik jest wlaczony do momentu zamkniecia bramy.
 W momencie zamkniecia bramy, silownik wylacza sie samoczynnie.
 
-SILOWNIK_OTWORZ_BRAME Chce wyslac do silownika sygnal otwarcia bramy, aby silownik otworzyl brame
+SILOWNIK_OTWORZ_BRAME. Chce wyslac do silownika sygnal otwarcia bramy, aby silownik otworzyl brame
 Wysylam sygnal otwarcia bramy do silownika.
 
-WYSLIJ_INFO_BRAMA_OTWARTA Chce wyslac do domofonu informacje, ze brama jest otwarta, aby przeslac informacje do systemu.
-Po otrzymaniu informacji z silownika, ze brama jest w pelni otwarta powiadamiam domofon, ze brama jest w pelni otwarta <<DOMOFON_007>>.
+POWIADOM_DOMOFON_BRAMA_OTWARTA. Chce wyslac do domofonu informacje, ze brama jest otwarta, aby przeslac informacje do systemu.
+Po otrzymaniu informacji z silownika, ze brama jest w pelni otwarta powiadamiam domofon, ze brama jest w pelni otwarta <<DOMOFON::POWIADOM_SYSTEM_BRAMA_W_PELNI_OTWARTA>>.
 Resetuje i startuje licznik czasu pelnego otwarcia bramy.
 
-WYSLIJ_INFO_BRAMA_ZAMKNIETA Chce wyslac do domofonu informacje, ze brama jest zamknieta, aby przeslac informacje do systemu.
-Po otrzymaniu informacji z silownika, ze brama jest zamknieta, powiadamiam domofon, ze brama jest zamknieta <<DOMOFON_008>>.
+POWIADOM_DOMOFON_BRAMA_ZAMKNIETA. Chce wyslac do domofonu informacje, ze brama jest zamknieta, aby przeslac informacje do systemu.
+Po otrzymaniu informacji z silownika, ze brama jest zamknieta, powiadamiam domofon, ze brama jest zamknieta <<DOMOFON::POWIADOM_SYSTEM_BRAMA_W_PELNI_ZAMKNIETA>>.
 
 
-Jako podsystem sterowania furtka
+Jako podsystem sterowania furtka (PSF)
 ===================
 
-OTWORZ_ELEKTROZAMEK Chce otworzyc elektrozamek furtki, aby otworzyc furtke.
+OTWORZ_FURTKE Chce otworzyc furtke, aby gosc mogl wejsc.
 Wlaczam elektrozamek furtki <<ELEKTROZAMEK_OTWORZ_FURTKE>>.
 
 ELEKTROZAMEK_OTWORZ_FURTKE Chce wyslac do elektrozamka sygnal otwarcia furtki, aby elektrozamek zwolnil zamek furtki
 Wysylam sygnal otwarcia elektrozamka.
 
-WYSLIJ_INFO_FURTKA_OTWARTA Chce wyslac do domofonu informacje, ze furtka jest otwarta, aby przeslac informacje do systemu.
-Po otrzymaniu informacji z czujnika otwarcia furtki, ze furtka jest otwarta, powiadamiam domofon, ze furtka jest otwarta <<DOMOFON_004>>.
+POWIADOM_DOMOFON_FURTKA_OTWARTA Chce wyslac do domofonu informacje, ze furtka jest otwarta, aby przeslac informacje do systemu.
+Po otrzymaniu informacji z czujnika otwarcia furtki, ze furtka jest otwarta, powiadamiam domofon, ze furtka jest otwarta <<DOMOFON::POWIADOM_SYSTEM_FURTKA_JEST_WLASNIE_OTWARTA>>.
 Resetuje i startuje licznik czasu pelnego otwarcia bramy.
 
-WYSLIJ_INFO_FURTKA_ZAMKNIETA Chce wyslac do domofonu informacje, ze furtka jest zamknieta, aby przeslac informacje do systemu.
-Po otrzymaniu informacji z czujnika zamkniecia furtki, ze furtka jest zamknieta, powiadamiam domofon, ze furtka jest zamknieta <<DOMOFON_005>>.
+POWIADOM_DOMOFON_FURTKA_ZAMKNIETA Chce wyslac do domofonu informacje, ze furtka jest zamknieta, aby przeslac informacje do systemu.
+Po otrzymaniu informacji z czujnika zamkniecia furtki, ze furtka jest zamknieta, powiadamiam domofon, ze furtka jest zamknieta <<DOMOFON::POWIADOM_SYSTEM_FURTKA_JEST_WLASNIE_ZAMKNIETA>>.
 
+Jako licznik maksymalnego czasu podgladu i podsluchu
+===================
+WYLACZ_PODGLAD_I_PODSLUCH. Chce wylaczyc podglad i podsluch po zadanym czasie, aby podglad i podsluch nie byl caly czas wlaczony.
+Po zadanym czasie wylaczam podglad i podsluch <<DOMOFON::POS_WYLACZ_PODGLAD_I_PODSLUCH>>, wylaczam licznik.
+USTAW_CZAS_I_CALLBACK.
 
 Jako licznik maksymalnego czasu otwarcia bramy
 ===================
 ZAMKNIJ_BRAME_PO_ZADANYM_CZASIE. Chce zamknac brame po zadanym czasie od jej otwarcia, aby nie byla caly czas otwarta.
-Po odliczeniu zadanego czasu, wywoluje sygnal zamkniecia bramy przez silownik <<SILOWNIK_ZAMKNIJ_BRAME>>.
-Ustawiam ponowne zliczanie, aby wysylac sygnal cyklicznie.
+Po odliczeniu zadanego czasu, wywoluje sygnal zamkniecia bramy przez domofon <<DOMOFON::PSB_ZAMKNIJ_BRAME>>.
+Resetuje licznik, aby wysylac sygnal cyklicznie.
+USTAW_CZAS_I_CALLBACK.
 
 Jako licznik czasu pelnego otwarcia bramy
 ===================
-WYSLIJ_INFO_BRAMA_CALY_CZAS_OTWARTA. Chce wyslac do domofonu informacje, ze brama jest caly czas otwarta, aby przeslac informacje do systemu, aby zapisac ja w historii zdarzen.
-jesli brama jest otwarta dluzej niz zadany czas, po odliczeniu czasu, wysylam do domofonu informacje o otwarciu bramy <<WYSLIJ_INFO_BRAMA_OTWARTA>>.
-Ustawiam ponowne zliczanie, aby wysylac informacje cyklicznie.
+POWIADOM_DOMOFON_BRAMA_CALY_CZAS_OTWARTA. Chce wyslac do domofonu informacje, ze brama jest caly czas otwarta.
+Jesli brama jest otwarta dluzej niz zadany czas, po odliczeniu czasu,
+wysylam do domofonu informacje informacje o ciaglym otwarciu bramy <<DOMOFON::POWIADOM_SYSTEM_BRAMA_W_PELNI_OTWARTA>>.
+Resetuje licznik, aby wysylac informacje cyklicznie.
+USTAW_CZAS_I_CALLBACK. 
 
 Jako licznik czasu otwarcia furtki
 ===================
-WYSLIJ_INFO_FURTKA_CALY_CZAS_OTWARTA. Chce wyslac do systemu informacje, ze furtka jest caly czas otwarta, aby przeslac informacje do systemu, aby zapisac ja w historii zdarzen.
-jesli furtka jest otwarta dluzej niz zadany czas, po odliczeniu czasu, wysylam do domofonu informacje o otwarciu furtki <<WYSLIJ_INFO_FURTKA_OTWARTA>>.
-Ustawiam ponowne zliczanie, aby wysylac informacje cyklicznie.
+POWIADOM_DOMOFON_FURTKA_CALY_CZAS_OTWARTA. Chce wyslac do domofonu informacje, ze furtka jest caly czas otwarta.
+jesli furtka jest otwarta dluzej niz zadany czas, po odliczeniu tego czasu,
+wysylam do domofonu informacje o ciaglym otwarciu furtki <<DOMOFON::POWIADOM_SYSTEM_FURTKA_JEST_WLASNIE_OTWARTA>>.
+Resetuje licznik, aby wysylac informacje cyklicznie.
+USTAW_CZAS_I_CALLBACK. 
 
+Jako podsystem obslugi strumienia obrazu i dzwieku (POS)
+===================
+WYSYLAJ_STRUMIEN_OBRAZU_I_DZWIEKU_DO_SYSTEMU. Chce wyslac do systemu obraz i dzwiek, aby przekazal go do domownika.
+Wlaczam kamere i mikrofon, odbieram z nich dane i wysylam je do systemu <<MH::WYSYLAJ_STRUMIEN_OBRAZU_I_DZWIEKU_DO_SYSTEMU>>
 
+ODTWARZAJ_DZWIEK_W_GLOSNIKU. Chce odtworzyc dzwiek otrzymany z systemu w glosniku, aby gosc slyszal domownika.
+Wlaczam glosnik. Odtwarzam dzwiek odebrany z systemu <<MH::ODBIERZ_STRUMIEN_DZWIEKU_Z_SYSTEMU>> na glosniku
 
-Protokol komunikacji domofonu z systemem:
+ZAKONCZ_ODBIOR_I_WYSYLANIE_OBRAZU_I_DZWIEKU_DO_SYSTEMU. Chce zakonczyc wyslac do systemu obrazu i dzwieku, aby zakonczyc przekazywanie ich do domownika.
+Wylaczam kamere i mikrofon, przestaje wysylac ich dane do systemu <<MH::ZAKONCZ_WYSYLANIE_STRUMIENIA_OBRAZU_I_DZWIEKU_DO_SYSTEMU>>
+
+ZAKONCZ_ODTWARZANIE_DZWIEKU. Chce zakonczyc odtwarzanie dzwieku na glosniku, aby gosc nie slyszal domownika.
+Wylaczam glosnik. Przestaje odtwarzac dzwiek odebrany z systemu. <<MH::ZAKONCZ_ODBIERANIE_STRUMIENIA_DZWIEKU_Z_SYSTEMU>>
+
+KAMERA_ZROB_ZDJECIE. Chce zrobic zdjecie kamera, aby wyslac je do systemu.
+Wlaczam kamere, robie zdjecie i wysylam je do systemu <<MH::WYSLIJ_ZDJECIE_DO_SYSTEMU>>, wy\u0142\u0105czam kamere
+
+Jako Display (DISPLAY):
+===================
+BRAK_AUTORYZACJI
+
+NIEPRAWIDLOWY_NUMER_MIESZKANIA
+
+NIE_PODNIESIONO_SLUCHAWKI
+
+Jako Message Handler domofonu z systemem (MH):
 ===================
 
-PROT_DOM_SYS_PU_001. Chce wyslac do systemu wybrany numer na domofonie, aby system mogl je zapisac w historii zdarzen i wyslac powiadomienie do odpowiednich domownikow.
+WYSLIJ_NUMER_Z_KLAWIATURY_DO_SYSTEMU. Chce wyslac do systemu wybrany numer na domofonie, aby system mogl je zapisac w historii zdarzen i wyslac powiadomienie do odpowiednich domownikow.
 
-PROT_DOM_SYS_PU_002. Chce otrzymac z systemu informacje, ze domownik przyjal powiadomienie, aby zestawic rozmowe.
+SYSTEM_ZWROC_POTWIERDZENIE_NUMERU. Chce otrzymac z systemu informacje, o potwierdzeniu prawidlowosci numeru, aby zestawic polaczenie.
 
-PROT_DOM_SYS_PU_003. Chce otrzymac z systemu informacje o zakonczeniu rozmowy, aby zakonczyc rozmowe i wysylanie zdjec z kamerki.
+POWIADOM_DOMOFON_SLUCHAWKA_PODNIESIONA. Chce otrzymac z systemu informacje, ze domownik przyjal powiadomienie, aby zestawic rozmowe.
 
-PROT_DOM_SYS_PU_004. Chce otrzymac z systemu informacje, ze furtka ma byc otwarta, aby sterowac elektrozamkiem.
+POWIADOM_DOMOFON_SLUCHAWKA_ODLOZONA. Chce otrzymac z systemu informacje o zakonczeniu rozmowy, aby zakonczyc rozmowe i wysylanie obrazu z kamerki.
+Z systemu otrzymuje informacje, aby zakonczyc rozmowe, koncze wysylanie obrazu i dzwieku i odtwarzanie glosu w glosniku
+<<DOMOFON::POS_ZAKONCZ_ODBIOR_I_WYSYLANIE>>
 
-PROT_DOM_SYS_PU_005. Chce wyslac do systemu informacje, ze furtka zostala otwarta, aby zapisac ja w historii zdarzen.
+DOMOFON_OTWORZ_FURTKE. Chce otrzymac z systemu informacje, ze furtka ma byc otwarta, aby sterowac elektrozamkiem.
+Z systemu otrzymuje informacje, aby otworzyc furtke, informuje o tym domofon <<DOMOFON::PSF_OTWORZ_FURTKE>>
 
-PROT_DOM_SYS_PU_006. Chce wyslac do systemu informacje, ze furtka zostala zamknieta, aby zapisac ja w historii zdarzen.
+POWIADOM_SYSTEM_FURTKA_OTWARTA. Chce wyslac do systemu informacje, ze furtka zostala otwarta, aby zapisac ja w historii zdarzen.
 
-PROT_DOM_SYS_PU_007. Chce otrzymac z systemu informacje, ze brama ma byc otwarta, aby moc sterowac silownikiem bramy.
+POWIADOM_SYSTEM_FURTKA_ZAMKNIETA. Chce wyslac do systemu informacje, ze furtka zostala zamknieta, aby zapisac ja w historii zdarzen.
 
-PROT_DOM_SYS_PU_008. Chce wyslac do systemu informacje, ze brama zostala w pelni otwarta, aby zapisac ja w historii zdarzen.
+DOMOFON_OTWORZ_BRAME. Chce otrzymac z systemu informacje, ze brama ma byc otwarta, aby moc sterowac silownikiem bramy.
+Z systemu otrzymuje informacje, aby otworzyc brame, informuje o tym domofon <<DOMOFON::PSB_OTWORZ_BRAME>>
 
-PROT_DOM_SYS_PU_009. Chce otrzymac z systemu informacje, ze brama ma byc zamknieta, aby moc sterowac silownikiem bramy.
+POWIADOM_SYSTEM_BRAMA_OTWARTA. Chce wyslac do systemu informacje, ze brama zostala w pelni otwarta, aby zapisac ja w historii zdarzen.
 
-PROT_DOM_SYS_PU_010. Chce wyslac do systemu informacje, ze brama zostala zamknieta, aby zapisac ja w historii zdarzen.
+DOMOFON_ZAMKNIJ_BRAME. Chce otrzymac z systemu informacje, ze brama ma byc zamknieta, aby moc sterowac silownikiem bramy.
+Z systemu otrzymuje informacje, aby zamknac brame, informuje o tym domofon <<DOMOFON::PSB_ZAMKNIJ_BRAME>>
 
-PROT_DOM_SYS_PU_011. Chcec wyslac zdjecie z kamerki do systemu, aby system mogl je przetworzyc.
+POWIADOM_SYSTEM_BRAMA_ZAMKNIETA. Chce wyslac do systemu informacje, ze brama zostala zamknieta, aby zapisac ja w historii zdarzen.
 
-PROT_DOM_SYS_PU_012. Chce otrzymac z systemu informacje o rozpoczaciu podgladu i podsluchu, aby wysylac zdjecia podgladu oraz dzwiek.
+WYSLIJ_ZDJECIE_DO_SYSTEMU. Chce wyslac zdjecie z kamerki do systemu, aby system mogl je przetworzyc.
 
-PROT_DOM_SYS_PU_013. Chce otrzymac z systemu informacje o zakonczeniu podgladu i podsluchu, aby zakonczyc wysylanie zdjec oraz dzwieku.
+DOMOFON_WLACZ_PODGLAD_I_PODSLUCH. Chce otrzymac z systemu informacje o rozpoczaciu podgladu i podsluchu, aby wysylac obraz podgladu oraz dzwiek.
+Z systemu otrzymuje informacje, aby rozpoczac podglad i podsluch, informuje o tym domofon <<DOMOFON::POS_WLACZ_PODGLAD_I_PODSLUCH>>
 
-PROT_DOM_SYS_PU_014. Chcec wyslac dane autoryzacji do systemu, aby system sprawdzil, czy moge otworzyc furtke.
+DOMOFON_WYLACZ_PODGLAD_I_PODSLUCH. Chce otrzymac z systemu informacje o zakonczeniu podgladu i podsluchu, aby zakonczyc wysylanie obrazu oraz dzwieku.
+Z systemu otrzymuje informacje, aby zakonczyc podglad i podsluch, informuje o tym domofon <<DOMOFON::POS_WYLACZ_PODGLAD_I_PODSLUCH>>
 
-PROT_DOM_SYS_PU_015. Chcec otrzymac z systemu informacje, o potwierdzeniu autoryzacji, aby otworzyc furtke.
+WYSLIJ_KOD_AUTORYZACJI_DO_SYSTEMU. Chce wyslac dane autoryzacji do systemu, aby system sprawdzil, czy moge otworzyc furtke.
 
-PROT_DOM_SYS_PU_016. Chcec wyslac alarm do systemu, aby go zarejestrowac w historii dzialania systemu.
+SYSTEM_ZWROC_POTWIERDZENIE_AUTORYZACJI. Chcec otrzymac z systemu informacje, o potwierdzeniu autoryzacji, aby otworzyc furtke.
 
-PROT_DOM_SYS_PU_017. Chcec wyslac zdjecie do systemu, aby mozna bylo je przekazac domownikowi / zanalizowac.
+WYSLIJ_ALARM_DO_SYSTEMU. Chcec wyslac alarm do systemu, aby go zarejestrowac w historii dzialania systemu.
 
-PROT_DOM_SYS_PU_018. Chcec wyslac dzwiek do systemu, aby mozna bylo go przekazac domownikowi.
+WYSYLAJ_STRUMIEN_OBRAZU_I_DZWIEKU_DO_SYSTEMU. Chcec wyslac strumien obrazu i dzwieku do systemu, aby mozna bylo go przekazac domownikowi / zanalizowac.
 
-PROT_DOM_SYS_PU_019. Chcec odbierac dzwiek z systemu, aby mozna bylo go przekazac gosciowi.
+ODBIERZ_STRUMIEN_DZWIEKU_Z_SYSTEMU. Chcec odbierac strumien dzwieku z systemu, aby mozna bylo go przekazac gosciowi.
 
-PROT_DOM_SYS_PU_020. Chcec wyslac do systemu informacje o zaprzestaniu podsluchu, aby system mogl powiadomic o tym domownika.
+ZAKONCZ_WYSYLANIE_STRUMIENIA_OBRAZU_I_DZWIEKU_DO_SYSTEMU. Chce wyslac do systemu informacje, ze zaprzestano wysylac dane obrazu i dzwieku, aby system nie oczekiwal na te dane.
+
+ZAKONCZ_ODBIERANIE_STRUMIENIA_DZWIEKU_Z_SYSTEMU. Chce zakonczyc odbieranie strumienia dzwieku z systemu.
+
+POWIADOM_SYSTEM_PRZERWANO_PODGLAD_I_PODSLUCH. Chcec wyslac do systemu informacje o zaprzestaniu podsluchu, aby system mogl powiadomic o tym domownika.
+
+POWIADOM_DOMOFON_O_ALARMIE. Chcec powiadomic domofon o sytuacjach wyjatkowych, aby mogl na nie zareagowac
+W przypadku problemow komunikacji z systemem, informuje o tym domofon <<DOMOFON::WYSWIETL_INFORMACJE>>
+
+
